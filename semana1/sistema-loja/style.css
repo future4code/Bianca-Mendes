@@ -1,0 +1,51 @@
+.cabeçalho {
+    background-color:#386641;
+    text-align: center;
+    width: 100%;
+	  
+}
+
+.botao {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: right;
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+h1 {
+    color: white;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: center; 
+    margin: 30px 0px;
+    
+}
+
+p {
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: center; 
+}
+
+.rodape {
+    background-color:#bc6c25;
+    display: block;
+    width: 100%;
+	height: auto;
+    bottom: 0;
+    position: fixed;
+	text-align: center;
+}
+
+#redes {
+    color: 
+
+}
+.icone {
+    width: 40px;
+    height: 40px;    
+}
+
+.corpo {
+    background-image: (/img/folhas.jpg);
+}
