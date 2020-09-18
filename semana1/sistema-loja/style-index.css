@@ -1,0 +1,57 @@
+.cabeçalho {
+    background-color:#386641;
+    text-align: center;
+    width: 100%;
+}
+
+.botao {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: right;
+    color: white;
+    background-color:#386641;
+    margin: 0px 10px;
+    text-decoration: none;
+}
+
+h1 {
+    background-color:#386641;
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: center; 
+    padding: 0px;
+}
+
+p {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: center;
+    color: white; 
+}
+
+.rodape {
+    background-color:#bc6c25;
+    color: white;
+    display: block;
+    width: 100%;
+	height: auto;
+    bottom: 0;
+    position: fixed;
+	text-align: center;
+}
+
+.icone {
+    width: 40px;
+    height: 40px;    
+}
+
+.corpo {
+    background-image: url(./img/folhas.jpg);
+    height: 440px;
+}
+
+h3 {
+    color: white; 
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: center;
+    padding: 200px 0px;
+}
+

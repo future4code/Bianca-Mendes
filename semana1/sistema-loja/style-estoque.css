@@ -1,0 +1,65 @@
+.cabeçalho {
+    background-color:#386641;
+    text-align: center;
+    width: 100%;
+}
+
+.botao {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: right;
+    color: white;
+    background-color:#386641;
+    margin: 0px 10px;
+    text-decoration: none;
+}
+
+p {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: white;
+}
+
+h2 {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: left;
+    color: #bc6c25;
+}
+
+
+th {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: medium;
+    color: #bc6c25;
+}
+
+.imagem {
+    width: 150px;
+    height: 150px; 
+}
+
+td {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: small;
+    text-align: center;
+    color: #386641;
+}
+
+table {
+    border: 2px solid #bc6c25;
+    border-radius: 5px;
+}
+
+.rodape {
+    background-color:#bc6c25;
+    color: white;
+    display: block;
+    width: 100%;
+	height: auto;
+    bottom: 0;
+    position: fixed;
+	text-align: center;
+}
+
+.icone {
+    width: 40px;
+    height: 40px;    
+}
