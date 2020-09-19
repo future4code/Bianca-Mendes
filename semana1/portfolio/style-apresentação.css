@@ -7,11 +7,11 @@ nav {
 
 span {
     color: white;
-    vertical-align: baseline;
-    text-align: right;
+    text-align: left;
+    
     font-weight: 600;
+    font-size: x-large;
     font-family:'Playfair Display', serif;
-    padding: 20px;
     
 }
 
@@ -19,20 +19,22 @@ ul {
     list-style-type: none;
     text-align: right;
     color: white;
+    
 }
 
 li {
     display: inline;
     color: white;
     text-decoration: none;
-}
+    margin: 0 10px;
+    font-size: x-large;    
+    }
 
 .abas {
     color: white;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight:400;
-    display: inline;
-    text-decoration: none;
+    text-decoration: none;     
 }
 
 * {
@@ -41,6 +43,7 @@ li {
 
 .capa {
     background-color: #e27396;
+    height: 450px;
 }
 
 h1 {
@@ -48,6 +51,8 @@ h1 {
     font-weight: 800;
     text-align: center;
     color: white;
+    font-size: 80px;
+    padding-top: 120px;
 }
 
 h3 {
@@ -55,19 +60,115 @@ h3 {
     font-size:medium ;
     text-align: center;
     color: white;
+    font-size: 30px;
+    
 }
 
-.rodape {
-    background-color: #4a4e69;
+.corpo-pagina {
+    background-color:#4a4e69;
+    
+}
+
+h2 {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    text-align: center;
+    font-size: 40px;
+    padding: 20px;
+}
+
+.nome-projeto {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 30px;
+    text-align: left;
+}
+
+p {
+    color: white;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:400;
+    font-size: 25px;
+    text-decoration: none;
+    text-align: justify;
+    width: 500px;
+}
+
+.imagem {
+    width: 100px;
+    height: 100px;
+    float:left;
+    margin: 0px 40px;
+    }
+
+.p-descrição {
+    color: white;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:400;
+    font-size: 25px;
+    text-decoration: none;
+    text-align: justify;
+    max-width: 700px;
+    margin: auto;
+}
+
+
+.botao {
+    color: white;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:400;
+    font-size: 25px;
+    text-decoration: none;
+    
+}
+
+.ola {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 30px;
+    text-align: center;
+}
+
+.contato {
+    text-align: center;
+}
+
+label {
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:400;
+    font-size: 25px;
+    color: white;
+    display: inline-block;
+    width: 90px;  
+}
+
+button {
+    background-color: #cbc0d3;
+    width: 80px;
+    height: 30px;
+    color: #FFFFFF;
+    border: 0px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    
+}
+
+.rodapé {
+    background-color: white;
     display: block;
     width: 100%;
 	height: auto;
     bottom: 0;
-    position: fixed;
-	text-align: center;
+    text-align: center;
+    margin: 05px;
 }
 
 .icone {
-    width: 40px;
-    height: 40px;    
+    width: 50px;
+    height: 50px;
+    text-align: center;   
 }
+
