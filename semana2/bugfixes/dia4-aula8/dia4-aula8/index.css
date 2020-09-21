@@ -59,7 +59,9 @@ div img {
 }
 
 .icone {
-    height: 15px;
+    height: 10px;
+    width: auto;
+    background-color: white;
 }
 
 
