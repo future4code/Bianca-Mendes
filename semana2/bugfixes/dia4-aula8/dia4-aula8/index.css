@@ -90,9 +90,6 @@ div img {
     
 }
 
-li {
-    list-style-type: decimal;
-}
 
 
 /**
@@ -136,4 +133,8 @@ td button {
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+.descr-prod {
+    text-align: center;
 }
