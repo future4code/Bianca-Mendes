@@ -155,3 +155,7 @@ td button {
 #imagem {
     background-color: white;
 }
+
+* {
+    font-family: roboto;
+}
