@@ -44,6 +44,7 @@ div img {
     border-radius: 5px;
     font-size: 20px;
     color: white;
+    outline: none;
     
 }
 
@@ -117,6 +118,7 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
+    outline: none;
 }
 
 .botao-comprar:hover {
@@ -145,6 +147,7 @@ td button {
     font-size: 10px;
     color: black;
     margin-left:45vw;
+    outline: none;
 }
 
 #back-button:hover {
