@@ -64,7 +64,13 @@ div img {
     width: auto;
     background-color: white;
 }
+.icone:hover {
+    opacity: 0.5;
+}
 
+.icone:active {
+    opacity: 1;
+}
 
 /** 
   *
