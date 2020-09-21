@@ -117,6 +117,12 @@ td button {
     color: black;
 }
 
+.botao-comprar:hover {
+    background-color: orange;
+}
+.botao-comprar:active {
+    background-color: orangered;
+}
 .container-do-search {
     margin-top: 20px;
     height: 100px;
