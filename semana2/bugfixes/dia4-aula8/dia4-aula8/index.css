@@ -90,6 +90,10 @@ div img {
     
 }
 
+li {
+    list-style-type: decimal;
+}
+
 
 /**
   *
