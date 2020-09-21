@@ -128,6 +128,11 @@ td button {
     height: 100px;
 }
 
+.busca {
+    border: none;
+    border-bottom: 1.5px solid black;
+}
+
 
 #back-button {
     background-color: white;
