@@ -1,0 +1,85 @@
+
+/* Exercícios Flexbox */
+
+Nível 1
+justify-content: flex-end;
+
+Nível 2
+justify-content: center;
+
+Nível 3
+justify-content: space-around;
+
+Nível 4 
+justify-content: space-between;
+
+Nível 5 
+align-items: flex-end;
+
+Nível 6
+justify-content: center;
+align-items: center;
+
+Nível 7
+justify-content: space-around;
+align-items: flex-end;
+
+Nível 8
+flex-direction: row-reverse;
+
+Nível 9
+flex-direction: column;
+
+Nível 10
+flex-direction: row-reverse;
+justify-content: flex-end;
+
+Nível 11
+flex-direction: column; /*usando coluna, o justify-content fica na vertical e o align-items horizontal */
+justify-content: flex-end;
+
+Nível 12
+flex-direction: column-reverse;
+justify-content: space-between;
+
+Nível 13
+flex-direction: row-reverse;
+justify-content:center;
+align-items: flex-end;
+
+Nível 14
+order:2;
+
+Nível 15
+order:-2;
+
+Nível 16
+align-self: flex-end;
+
+Nível 17
+align-self: flex-end;
+order:2;
+
+Nível 18
+flex-wrap: wrap;
+
+Nível 19
+flex-direction: column;
+flex-wrap: wrap;
+
+Nível 20
+flex-flow: column wrap /* junção do flex-direction e flex-wrap, separar por espaço as funções */
+
+Nível 21
+align-content: flex-start;
+
+Nível 22
+align-content: flex-end;
+
+Nível 23
+align-content: center;
+flex-direction: column-reverse;
+
+Nível 24
+
+
