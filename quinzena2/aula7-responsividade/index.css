@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    /*row-gap: 10px;*/ 
+}
+
+.item1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color: red;
+    height: 80px;
+    
+}
+
+.corpo-retangulos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    
+}
+.corpo-retangulos > .item2,.item3,.item4,.item5,.item6,.item7 {
+    display: grid;
+    height: 80px;
+    border: 1px solid black;
+    align-content: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.item2 {
+    background-color: blue;
+    
+}
+
+.item3 {
+    background-color: yellow;
+}
+
+.item4 {
+    background-color: green;
+}
+
+.item5 {
+    background-color: blue;
+}
+
+.item6 {
+    background-color: yellow;
+}
+
+.item7 {
+    background-color: green;
+}
+
+.corpo-quadrado {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.corpo-quadrado > .item8, .item9 {
+    display: grid;
+    height: 240px;
+    border: 1px solid black;
+    align-content: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.item8, .item9 {
+    background-color: black;
+    color: white;
+}
+
+.ret-brancos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.ret-brancos > .item10, .item11, .item12 {
+    display: grid;
+    height: 80px;
+    border: 1px solid black;
+    align-content: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.item10, .item11, .item12 {
+    background-color: white;
+}
+
+/* RESPONSIVIDADE - tela intermediária */
+
+
+@media screen and (min-device-width:421px) and (max-device-width:800px) {
+    
+}
+
+
+/* RESPONSIVIDADE - tela pequena */
+
+
+@media screen and (min-device-width:320px) and (max-device-width:420px) {
+    
+    .corpo-retangulos {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat (1fr);
+    }
+
+    .corpo-quadrado {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .ret-brancos {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat (1fr);
+    }
+    
+    .corpo-quadrado > .item8, .item9 {
+        height: 80px;
+    }
+}
