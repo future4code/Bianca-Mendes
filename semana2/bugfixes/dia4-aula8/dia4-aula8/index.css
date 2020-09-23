@@ -1,0 +1,173 @@
+/** 
+  *
+  *  ESTILOS GERAIS 
+  *
+  **/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    background-color: #fe7e02;
+    padding: 10px 5px 10px 5px;
+    color: white;
+    text-align: center;
+}
+
+input {
+    height: 20px;
+    width: 500px;
+}
+
+button:focus {
+    color: white;
+}
+
+img {
+    width: 100px;
+}
+
+div>p:first-child {
+    display: inline;
+}
+
+div img {
+    background: black;
+}
+
+.botao-amarelo {
+    background-color: #ffaf43;
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    outline: none;
+    
+}
+
+.botao-amarelo:hover {
+    background-color: #c44f00;
+}
+
+.container {
+    height: 500px;
+    text-align: center;
+    padding-top: 80px;
+   
+}
+
+.icone {
+    height: 10px;
+    width: auto;
+    background-color: white;
+}
+.icone:hover {
+    opacity: 0.5;
+}
+
+.icone:active {
+    opacity: 1;
+}
+
+/** 
+  *
+  *  ESTILOS HOME 
+  *
+  **/
+
+#container-de-descricao {
+    background-color: #2274a5;
+    color: white;
+}
+
+#container-de-descricao>ol {
+    padding: 15px 0px;
+    list-style-position: inside;
+}
+
+#container-para-comprar {
+    background-color: #e7eb90;
+}
+
+#container-para-comprar>p {
+    color: #c44f00;
+    padding: 100px 0;
+    font-size: 60px;
+    display: block;
+    
+}
+
+
+
+/**
+  *
+  *  ESTILOS COMPRAR 
+  *
+  **/
+
+div:nth-child(2),
+div:last-child {
+    text-align: center;
+}
+
+table {
+    width: 60%;
+    margin: auto;
+}
+
+td button {
+    background-color: #fadf63;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+    outline: none;
+}
+
+.botao-comprar:hover {
+    background-color: orange;
+}
+.botao-comprar:active {
+    background-color: orangered;
+}
+.container-do-search {
+    margin-top: 20px;
+    height: 100px;
+}
+
+.busca {
+    border: none;
+    border-bottom: 1.5px solid black;
+}
+
+
+#back-button {
+    background-color: white;
+    width: 100px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 10px;
+    color: black;
+    margin-left:45vw;
+    outline: none;
+}
+
+#back-button:hover {
+    background-color: #635a3d
+}
+
+.descr-prod {
+    text-align: center;
+}
+
+#imagem {
+    background-color: white;
+}
+
+* {
+    font-family: roboto;
+}
