@@ -4,7 +4,6 @@
 
 .grid-container {
     display: grid;
-    /*row-gap: 10px;*/ 
 }
 
 .item1 {
@@ -13,14 +12,13 @@
     grid-template-rows: 1fr;
     background-color: red;
     height: 80px;
-    
 }
 
 .corpo-retangulos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    
+    width: auto;
 }
 .corpo-retangulos > .item2,.item3,.item4,.item5,.item6,.item7 {
     display: grid;
@@ -29,11 +27,11 @@
     align-content: center;
     justify-content: center;
     margin: 10px;
+    width: auto;
 }
 
 .item2 {
     background-color: blue;
-    
 }
 
 .item3 {
@@ -99,7 +97,22 @@
 
 
 @media screen and (min-device-width:421px) and (max-device-width:800px) {
+
+    #block {
+        grid-column: 1 / 4;
+    }
     
+    .corpo-retangulos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .ret-brancos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }   
 }
 
 
@@ -111,7 +124,7 @@
     .corpo-retangulos {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat (1fr);
+        grid-template-rows: repeat ( 6 1fr);
     }
 
     .corpo-quadrado {
@@ -123,10 +136,11 @@
     .ret-brancos {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat (1fr);
+        grid-template-rows: repeat (3 1fr);
     }
     
     .corpo-quadrado > .item8, .item9 {
-        height: 80px;
+        height: 5em;
     }
 }
+
