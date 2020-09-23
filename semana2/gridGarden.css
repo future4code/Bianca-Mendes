@@ -1,0 +1,61 @@
+Nível 01
+grid-column-start: 3;
+
+Nível 02
+grid-column-start:5;
+
+Nível 03
+grid-column-end: 4;
+
+Nível 04
+grid-column-end:2;
+
+Nível 05
+grid-column-end:-2;
+
+Nível 06
+grid-column-start: -3;
+
+Nível 07
+grid-column-end: span 2;
+
+Nível 08
+grid-column-end: span 5;
+
+Nível 09
+grid-column-start: span 3;
+
+Nível 10
+grid-column: 4/6;
+
+Nível 11
+grid-column: 2/5;
+
+Nível 12
+grid-row-start: 3;
+
+Nível 13
+grid-row: 3 / 6;
+
+Nível 14
+grid-column: 2;
+grid-row: 5;
+
+Nível 15
+grid-column: 2/6;
+grid-row: 1/6;
+
+Nível 16
+grid-area: 1 / 2 / 4 / 6;
+
+Nível 17
+grid-area: 2 / 3 / 5 / 6;
+
+Nível 18
+order:4;
+
+Nível 19
+order: -1;
+
+Nível 20
+
