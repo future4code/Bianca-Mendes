@@ -12,14 +12,14 @@
 
 <!--cabeçalho-->
 <header>
-
-   
-    <nav>
-        <!--<img id="logo" src="logo-4food.png" alt="logo-4food"></img>-->
+    <div class="pre-apresentacao">
+       <img id="logo" src="./img/logo-4food.png" alt="logo-4food"></img>
+    </div>
+       <nav>
         <ul>
             <li><a class="abas" href="#como-funciona">Como funciona</a></li>
-            <li><a class="abas" href="#serviços">Nossos serviços</a></li>
             <li><a class="abas" href="#entrega">Será que entrega?</a></li>
+            <li><a class="abas" href="#contato">Fale conosco</a></li>
         </ul>
     </nav>
 </header>
@@ -43,30 +43,74 @@
 </section>
 <!--fim apresentação-->
 
-<!--inicio quem somos-->
+<!--inicio como funciona-->
 <section id="como-funciona">
     <h2>Seu mercado preferido a um clique de distância</h2>
     <h2>Mais rapidez e praticidade pro seu dia a dia</h2>
+    
+    <h1>COMO FUNCIONA</h1>
+
+        <h2>Escolha entre:</h2>
+
+        <div class="opcoes">
+            <div class="opcao1">
+            <img class="img-opc" src="./img/ingredientes.jpg" alt="ingredientes"/>
+            <p>Ingredientes frescos e de qualidade</p>
+            <a class= "botao" href="" target="_blank">Comprar</a>
+            </div>
+            <div class= "opcao2">
+            <img class="img-opc" src="./img/pronto1.jpg" alt="prato-pronto"/>
+            <p>Pratos prontos para todas as horas</p>
+            <a class= "botao" href="" target="_blank">Ver cardápio</a>
+        </div>
+        </div>
 </section>
-<!--fim quem somos-->
+<!--fim como funciona-->
 
-<!--inicio como funciona-->
-<section id="serviços">
-
-</section>
-<!--fim nossos serviços-->
-
-<!--entrega-->
+<!-- inicio entrega-->
 <section id="entrega">
+    <h1>SERÁ QUE ENTREGA?</h1>
+    <h2>Descubra se já chegamos na sua região</h2>
 
-
+    <form> 
+        <label for="cep">CEP para entrega</label>
+        <input type= "text" name= "CEP" id= "cep" placeholder="Qual seu cep?">
+        <button type= "submit">Verificar</button>
+    </form>
 </section>
 <!--fim entrega-->
+
+<!--inicio contato-->
+<section id="contato">
+    <h1>FALE CONOSCO</h1>
+    <h2>Vamos conversar</h2>
+
+    <form class="contato">  
+        <label for="nome">Nome</label>
+        <input type= "text" name= "Nome" id= "nome" placeholder="Qual seu nome?">
+
+        <label for="e-mail">Email</label>
+        <input type= "email" name= "Email" id= "e-mail" placeholder="Qual seu email?">
+
+        <label for="mensagem">Mensagem</label>
+        <input id="mensagem" type= "text" name= "Mensagem" id= "mensagem" placeholder="Pode falar!">
+
+        <button id="enviar" type= "submit">Enviar</button>
+    </form>
+</section>
+<!--fim contato-->
+
 </main>
 
 <!--inicio rodape-->
 <footer>
+    <p>Siga nossas redes sociais</p>
 
+    <a class= "botao" href="http://www.facebook.com" target="_blank"><img class="icone" src="./img/logo-facebook.png" alt= "logo-facebook"/></a>
+    <a class= "botao" href="http://www.instagram.com" target="_blank"><img class="icone" src="./img/logo-instagram.png" alt= "logo-instagram"/></a>
+    <a class= "botao" href="http://www.twitter.com" target="_blank"><img class="icone" src="./img/logo-twitter.png" alt= "logo-twitter"/></a>
+    
+   
 
 </footer>
 <!--fim rodape-->
