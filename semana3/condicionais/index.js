@@ -86,7 +86,7 @@ if (generoFilme === "fantasia" && valorIngresso < 15) {
 }
  */
 
- //2. INCOMPLETO
+ //2. 
 
  const nomeCompleto = prompt("Digite seu nome completo:")
  let tipoDeJogo = prompt("Escolha o tipo do jogo:'IN' internacional ou 'DO' domestico").toUpperCase()
@@ -95,6 +95,9 @@ let categoria = Number(prompt("Escolha entre as categorias 1, 2, 3 ou 4"))
 let qntIngresso = Number(prompt("Digite a quantidade de ingressos que deseja"))
 let valorIngresso
 let valorTotal
+const SF = "Semi-final"
+const DT = "Decisão do terceiro lugar"
+const FI = "Final"
 
 
 switch (tipoDeJogo) {
@@ -105,7 +108,7 @@ switch (tipoDeJogo) {
         tipoDeJogo = "Nacional"
         break
     default:
-        tipoDeJogo = "digite um valor válido"
+        tipoDeJogo = "Digite um valor válido"
 }
 
 switch (etapaDoJogo) {
@@ -113,87 +116,73 @@ switch (etapaDoJogo) {
         etapaDoJogo = "Semi-final"
         break
     case "DT":
-        etapadoJogo = "Decisão do terceiro lugar"
+        etapaDoJogo = "Decisão do terceiro lugar"
         break
     case "FI":
-        etapadoJogo = "Final"
+        etapaDoJogo = "Final"
         break
     default:
         etapaDoJogo = "Digite um valor válido"
         break
 }
 
-if (etapaDoJogo === "SF") {
+if (etapaDoJogo === SF) {
     switch (categoria) {
         case 1:
-            valorIngresso = 1.320
+            valorIngresso = 1320
             break
-
         case 2:
             valorIngresso = 880
             break
-
         case 3: 
             valorIngresso = 550
             break
-
         case 4:
             valorIngresso = 220
             break
-
     }
 
-} else if (etapaDoJogo === "DT") {
+} else if (etapaDoJogo === DT) {
     switch (categoria) {
         case 1:
             valorIngresso = 660
             break
-    
         case 2:
             valorIngresso = 440
             break
-    
         case 3: 
             valorIngresso = 330
             break
-    
         case 4:
             valorIngresso = 170
             break
-
     }
 
-} else if (etapaDoJogo === "FI") {
+} else if (etapaDoJogo === FI) {
     switch (categoria) {
         case 1:
             valorIngresso = 1980
             break
-        
         case 2:
             valorIngresso = 1320
             break
-        
         case 3: 
             valorIngresso = 880
             break
-        
         case 4:
             valorIngresso = 330
             break 
-
     }
 
-} else  {
-            valorIngresso = "teste"
-        }
+} 
+
 
      
-       
-if (tipoDeJogo === "DO") {
-    valorIngresso
-} else {
-    valorIngresso*4.10
-}
+   
+if (tipoDeJogo === "Internacional") {valorIngresso = valorIngresso * 4.10}
+    
+
+
 
 
 console.log(" ---- Dados da Compra ----")
@@ -203,7 +192,18 @@ console.log(`Etapa do Jogo: ${etapaDoJogo}`)
 console.log(`Categoria: ${categoria}`)
 console.log(`Quantidade de ingressos: ${qntIngresso}`)
 console.log("---- Valores ----")
-console.log(`Valor do ingresso: ${valorIngresso}`)
+console.log(`Valor do ingresso:R$  ${valorIngresso}`)
+console.log(`Valor total: R$ ${qntIngresso*valorIngresso}`)
+
+
+
+
+
+
+
+
+
+
 
 
 
