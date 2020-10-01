@@ -52,21 +52,20 @@ console.log(arrayString)
 */
 
 //E.
-
+/*
 let arrayOriginal = [20,40,50,60,70,80,90]
-let valorMaximo = 0
-let valorMinimo = 95
-
+let valorMaximo = arrayOriginal[0]
+let valorMinimo = arrayOriginal[0]
 
 for (let numero of arrayOriginal) {
     if (valorMaximo < numero) {
         valorMaximo = numero
-    }  else if (valorMinimo  numero) {
+    }  else if (valorMinimo > numero) {
         valorMinimo = numero
     }
 }
 console.log(`O maior numero é ${valorMaximo} e o menor numero é ${valorMinimo}`)
-
+*/
 
 
 
