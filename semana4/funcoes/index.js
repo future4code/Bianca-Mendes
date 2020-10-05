@@ -55,8 +55,8 @@ console.log(resultadoSoma)
 /*
 let somarNumeros = (a, b) => {
     if (a >= b) {
-        return "true"
-    } else { return "false"}
+        return true
+    } else { return false}
 }
 
 const resultadoBoolean = somarNumeros(1,5)
@@ -76,15 +76,70 @@ console.log(resultado)
 */
 
 //6A.
-
+/*
 const arrayNum = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
 
 let arrayDeNumeros = (array) => {
-    for (let i = 0; i < array.lenght; i++ ) {
-        console.log(array.lenght)
-    }
-    return array.lenght
+    for (let i = 0; i < array.length; i++ ) 
+      {}
+
+    return array.length
 }
 
 let tamanhoDoArray = arrayDeNumeros(arrayNum)
 console.log(tamanhoDoArray) 
+*/
+
+//B.
+/*
+let numeroParImpar = (a) => {
+    if (a%2 === 0) {
+        return true
+    } else { return false}
+}
+
+const numeroPar = numeroParImpar(7)
+console.log(numeroPar)
+*/
+
+//C.
+/*
+const arrayNum = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
+
+let qntNumerosPares = (array) => {
+    let arrayPar = []
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] % 2 === 0) {
+            arrayPar.push(array[i]) 
+        }
+    }
+    return arrayPar.length
+}
+
+let novoArray = qntNumerosPares(arrayNum)
+console.log(novoArray)
+*/
+
+//D.
+/*
+const arrayNum = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
+
+let numeroParImpar = (a) => {
+    if (a%2 === 0) {
+        return true
+    } else {return false}
+}
+
+let qntNumerosPares = (array) => {
+    let arrayPar = []
+    for (let i = 0; i < array.length; i++) {
+        if (numeroParImpar(array[i])) {
+            arrayPar.push(array[i])  
+        }
+    }
+    return arrayPar.length
+}
+
+let novoArray = qntNumerosPares(arrayNum)
+console.log(novoArray)
+*/
