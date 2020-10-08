@@ -46,6 +46,8 @@ function limparFiltros() {
     document.getElementById('tipoFiltro').value = ""
     document.getElementById('valorFiltroMin').value = ""
     document.getElementById('valorFiltroMax').value = ""
+
+    imprimirDespesas(arrDespesas)
 }
 
 
@@ -88,7 +90,11 @@ function filtrarDespesas(){
 
     let despesasFiltradas
     despesasFiltradas = arrDespesas.filter((despesa) => {
-        if (despesa.tipo === tipoFiltro && despesa.valor <= valorMin && despesa.valor >= valorMax) {return true}
+        if ((despesa.tipo === tipoFiltro || tipoFiltro === "todos") && (despesa.valor >= valorMin) && (despesa.valor <= valorMax)) {return true} 
+        return false 
+
+        //if ((despesa.valor >= valorMin) && (despesa.valor <= valorMax)) {return true}
+
     })
     
     // AQUI NESSA VARIÁVEL VEM A IMPLEMENTAÇÃO
