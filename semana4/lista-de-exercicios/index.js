@@ -47,3 +47,23 @@ const quantidadeDeNumerosPares =  (numero) => {
 quantidadeDeNumerosPares(12)
 */
 
+
+//4.
+/*
+let tipoDeTriangulo = (lado1, lado2, lado3) => {
+    if (lado1 === lado2 && lado2 === lado3) {
+       console.log("Triângulo equilatero")
+    } else if (lado1 === lado2 || lado2 === lado3 || lado1 === lado3) {
+        console.log("Triângulo Isósceles")
+    } else if (lado1 !== lado2 !== lado3) {
+        console.log("Triângulo Escaleno")
+    }
+}
+
+tipoDeTriangulo(2, 2, 2)
+tipoDeTriangulo(2, 2, 3)
+tipoDeTriangulo(1, 2, 3)
+*/
+
+
+//5.
