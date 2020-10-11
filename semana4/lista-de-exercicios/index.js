@@ -67,3 +67,38 @@ tipoDeTriangulo(1, 2, 3)
 
 
 //5.
+
+const comparadorDeNumeros = (numero1, numero2) => {
+    
+    //para encontrar o maior numero
+    
+    if (numero1 > numero2) {
+       console.log(`O maior numero é ${numero1}`)
+    } else { 
+        console.log(`O maior numero é ${numero2}`)
+    }
+
+    // para descobrir se numero1 é divisivel por numero2
+    
+    if (numero1 % numero2 === 0) {
+        console.log(`${numero1} é divisivel por ${numero2}`)
+    } else { 
+        console.log(`${numero1} não é divisivel por ${numero2}`)
+    }
+
+    // para descobrir se numero2 é divisivel por numero1
+    
+    if (numero2 % numero1 ===0) {
+        console.log(`${numero2} é divisivel por ${numero1}`)
+    } else { 
+        console.log(`${numero2} não é divisivel por ${numero1}`)
+    }
+
+    // para encontrar a diferença entre eles
+    
+    let diferençaEntre1e2 = Math.max(numero1,numero2) - Math.min(numero1,numero2)
+    console.log(`A diferença entre eles é ${diferençaEntre1e2}`)
+
+}
+
+comparadorDeNumeros(5, 6)
