@@ -33,3 +33,17 @@ arrayCores(cores)
 //d. !(booleano2 && booleano3) || !(booleano1 && booleano3) - Resposta: false
 //e. !(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3) - Resposta: true
 
+
+//3. O código não funcionará pois a condição de continuação esta incorreta. Segue código corrigido:
+/*
+const quantidadeDeNumerosPares =  (numero) => {
+    let i = 0
+ 
+    while(i < numero) {
+        console.log(i*2)
+        i++
+    }
+}
+quantidadeDeNumerosPares(12)
+*/
+
