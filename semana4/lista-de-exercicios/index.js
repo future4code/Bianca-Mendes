@@ -25,3 +25,11 @@ arrayCores(cores)
 */
 
 
+//2.
+
+//a. booleano1 && booleano2 && !booleano4 - Resposta: false
+//b. (booleano1 && booleano2) || !booleano3 - Resposta: false
+//c. (booleano2 || booleano3) && (booleano4 || booleano1) - Resposta: true
+//d. !(booleano2 && booleano3) || !(booleano1 && booleano3) - Resposta: false
+//e. !(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3) - Resposta: true
+
