@@ -67,7 +67,7 @@ tipoDeTriangulo(1, 2, 3)
 
 
 //5.
-
+/*
 const comparadorDeNumeros = (numero1, numero2) => {
     
     //para encontrar o maior numero
@@ -102,3 +102,67 @@ const comparadorDeNumeros = (numero1, numero2) => {
 }
 
 comparadorDeNumeros(5, 6)
+*/
+
+
+//---------------------------------- EXERCICIOS DE FUNÇÕES --------------------------------------
+
+//1.
+
+const arrayDeNumeros = [ 0, 1, 2, 3, 5, 8, 13, 21]
+
+//para encontrar o primeiro maior numero
+
+let maiorNumero = (array) => {
+    let primeiroMaiorNumero = 0
+
+    for(let numero of arrayDeNumeros) {
+        if (numero > primeiroMaiorNumero) {
+            (primeiroMaiorNumero = numero)
+        }
+    }
+    //console.log(primeiroMaiorNumero)
+
+//para encontrar o segundo maior numero
+
+    let segundoMaiorNumero = 0
+
+    for(let numero of arrayDeNumeros) {
+        if (numero > segundoMaiorNumero && numero !== primeiroMaiorNumero) {
+            segundoMaiorNumero = numero
+        }
+    }
+    console.log(segundoMaiorNumero)
+}
+
+maiorNumero(arrayDeNumeros)
+
+//para encontrar o primeiro menor numero
+
+let menorNumero = (array) => {
+    let primeiroMenorNumero = Infinity
+
+    for(let numero of arrayDeNumeros) {
+        if (numero < primeiroMenorNumero) {
+            (primeiroMenorNumero = numero)
+        }
+    }
+    //console.log(primeiroMenorNumero)
+
+//para encontrar o segundo menor numero
+
+    let segundoMenorNumero = Infinity
+
+    for(let numero of arrayDeNumeros) {
+        if (numero < segundoMenorNumero && numero !== primeiroMenorNumero) {
+            segundoMenorNumero = numero
+        }
+    }
+    console.log(segundoMenorNumero)
+}
+
+menorNumero(arrayDeNumeros)
+
+
+
+
