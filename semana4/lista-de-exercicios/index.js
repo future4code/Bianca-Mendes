@@ -233,5 +233,43 @@ anonimizarPessoa()
 */
 
 
+//------------------------------ EXERCICIOS DE FUNÇÕES DE ARRAY ---------------------------------
+
+//1a.
+/*
+const pessoas =[
+	{ nome: "Pedro", idade: 20 },
+	{ nome: "João", idade: 10 },
+	{ nome: "Paula", idade: 12 },
+	{ nome: "Artur", idade: 89 } 
+]
+
+const adultos = pessoas.filter((pessoa, index, Array) => {
+    if (pessoa.idade >= 20) {
+        return true
+    }
+        return false
+    
+})
+console.log(adultos)
+*/
 
 
+//1b.
+/*
+const pessoas =[
+	{ nome: "Pedro", idade: 20 },
+	{ nome: "João", idade: 10 },
+	{ nome: "Paula", idade: 12 },
+	{ nome: "Artur", idade: 89 } 
+]
+
+const criancas = pessoas.filter((pessoa, index, Array) => {
+    if (pessoa.idade < 20) {
+        return true
+    }
+        return false
+    
+})
+console.log(criancas)
+*/
