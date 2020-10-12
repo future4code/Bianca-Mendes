@@ -181,3 +181,19 @@ console.log(hello)
 //1. Os arrays são responsáveis por criar listas de strings ou numeros.Dentro de um array consegue-se ordenar dados lado a lado, separados por virgulas. Pode-se utilizar o array para agrupar um determinado numero de dados, facilitando chamar/alterar esses dados posteriormente. Objetos são estruturas que permitem guardar dados mais complexos, as informações são estruturadas dentro de propriedades, e cada propriedade é dividida entre chave(nome da informação)-valor(informação), possibilita alterar dados de forma mais especifica e assim como o array pode ser chamado/alterado posteriormente a sua criação.
 
 
+//2.
+/*
+const criarRetangulo = (lado1, lado2) => {
+    let dadosRetangulo = {
+        largura: lado1,
+        altura: lado2, 
+        perimetro: (2 * (lado1 + lado2)),
+        area: (lado1 * lado2)
+    }
+   console.log(dadosRetangulo)
+}
+
+criarRetangulo(5, 10)
+*/
+
+
