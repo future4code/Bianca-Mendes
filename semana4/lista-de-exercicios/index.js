@@ -108,7 +108,7 @@ comparadorDeNumeros(5, 6)
 //---------------------------------- EXERCICIOS DE FUNÇÕES --------------------------------------
 
 //1.
-
+/*
 const arrayDeNumeros = [ 0, 1, 2, 3, 5, 8, 13, 21]
 
 //para encontrar o primeiro maior numero
@@ -162,7 +162,17 @@ let menorNumero = (array) => {
 }
 
 menorNumero(arrayDeNumeros)
+*/
 
+
+//2.
+
+let ola = function() {  
+    return (alert("Hello Future4"))
+}
+
+const hello = ola()
+console.log(hello)
 
 
 
