@@ -273,3 +273,41 @@ const criancas = pessoas.filter((pessoa, index, Array) => {
 })
 console.log(criancas)
 */
+
+
+//2a.
+/*
+const arrayNumbs = [1, 2, 3, 4, 5, 6]
+
+const multiplicarArray = arrayNumbs.map((numero, index, array) => {
+            return numero * 2
+})
+console.log(multiplicarArray)    
+*/    
+
+
+//2b.
+/*
+const arrayNumbs = [1, 2, 3, 4, 5, 6]
+
+const triplicarArray = arrayNumbs.map((numero, index, array) => {
+            return String(numero * 3)
+})
+console.log(triplicarArray)
+*/
+
+
+//2c.
+
+const arrayNumbs = [1, 2, 3, 4, 5, 6]
+
+const parImparArray = arrayNumbs.map((numero) => {
+        let paridadeNumero
+            if(numero % 2 === 0) {
+                paridadeNumero = "par"
+            } else {
+                paridadeNumero = "impar"
+            }
+            return (`${String(numero)} é ${paridadeNumero}`)
+})
+console.log(parImparArray)
