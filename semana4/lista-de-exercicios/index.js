@@ -212,4 +212,26 @@ filmeFavorito()
 */
 
 
+//4.
+/*
+const informacoesPessoais = {
+    nome: "Dory",
+    idade: 20,  
+    email: "dory@qualmesmomeuemail.com",
+    endereco: "P Sherman 42 Wallaby Way"
+}
+
+function anonimizarPessoa () {
+    let novoCadastro = {
+        ...informacoesPessoais,
+        nome: "Anônimo"
+    }
+    console.log(novoCadastro)
+}
+
+anonimizarPessoa()
+*/
+
+
+
 
