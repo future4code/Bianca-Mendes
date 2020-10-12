@@ -197,3 +197,19 @@ criarRetangulo(5, 10)
 */
 
 
+//3. 
+/*
+const filmeFavorito = () => {
+    let infosFilme = {
+        titulo: "LaLaLand",
+        ano: 2017,
+        diretor: "Damien Chazelle",
+        atores: ["Ryan Gosling", "Emma Stone", "John Legend", "Rosemarie DeWitt"]
+    }
+    console.log(`Venha assistir ${infosFilme.titulo}, de ${infosFilme.ano}, dirigido por ${infosFilme.diretor} e estrelado por ${infosFilme.atores}.`)
+}
+filmeFavorito()
+*/
+
+
+
