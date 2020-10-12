@@ -358,4 +358,43 @@ console.log(naoPermitidoMontanhaRussa)
 */
 
 
-//
+//4.
+/*
+const consultas = [
+	{ nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+	{ nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+	{ nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+	{ nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+]
+
+const emailConsultas = consultas.map((pessoa, index, array) => {
+    //para definir palavras (Sr/Sra - lembra-la/lembra-lo)
+
+    let genero
+    if(genero === "feminino") {
+        genero = "Sra"
+    } else {
+        genero = "Sr"
+    }
+
+    let lembrarConsulta
+    if(genero === "feminino") {
+        lembrarConsulta = "lembra-la"
+    } else {
+        lembrarConsulta = "lembra-lo"
+    }
+
+    // para definir qual email enviar
+
+    if(pessoa.cancelada === true) {
+        return ( `Olá, ${genero} ${pessoa.nome}. Infelizmente, sua consulta marcada
+        para o dia ${pessoa.dataDaConsulta} foi cancelada. Se quiser, pode entrar em 
+        contato conosco para remarcá-la.`)
+    }
+    return (`Olá, ${genero} ${pessoa.nome}. Estamos enviando esta mensagem para
+    ${lembrarConsulta} da sua consulta no dia ${pessoa.dataDaConsulta}.
+     Por favor, acuse o recebimento deste e-mail.`)
+})
+
+console.log(emailConsultas)
+*/
