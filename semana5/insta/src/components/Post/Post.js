@@ -69,7 +69,7 @@ class Post extends React.Component {
   aoCompartilharPost = (event) => {
     console.log(`Post compartilhado no ${event.target.id}`)
 }
-  
+ 
 
   render() {
 

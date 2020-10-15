@@ -3,28 +3,47 @@ import './Compartilhar.css'
 
 export class Compartilhar extends Component {
 	state = {
-		//compartilharInput: ""
+		comentario: ""
 	}
-	/*
-	onChangeCompartilhar = (event) => {
+
+	onclickCompartilhar = () => {
+		this.setState({
+		compartilhar: !this.state.compartilhar
+		})
+	  }
+	
+	  aoCompartilharPost = (event) => {
+		console.log(`Post compartilhado no ${event.target.id} com a mensagem ${this.state.comentario}`)
+		this.setState({comentario: ""})
+	}
+
+
+	
+	onChangeComentario = (event) => {
 		this.setState({                   //pra fazer o input funcionar
-			compartilharInput: event.target.value
+			comentario: event.target.value
 		})
 	}
-*/
+
+	
+
 	render() {
 		return <div className={'share-container'}>
-			<button id={"Instagram"} onClick={this.props.aoCompartilharPost}>Instagram</button>
-			<button id={"Facebook"} onClick={this.props.aoCompartilharPost}>Facebook</button>
-			<button id={"Twitter"} onClick={this.props.aoCompartilharPost}>Twitter</button>
+
+			<input
+			className={'comentario'}
+			value={this.state.comentario}
+			onChange={this.onChangeComentario}
+			/>
+			<button id={"Instagram"} onClick={this.aoCompartilharPost}>Instagram</button>
+			<button id={"Facebook"} onClick={this.aoCompartilharPost}>Facebook</button>
+			<button id={"Twitter"} onClick={this.aoCompartilharPost}>Twitter</button>
 		</div>
 	}
 }
 
-/*
-<input
-className={'input-compartilhar'}
-value={this.state.compartilharInput}
-onChange={this.onChangeCompartilhar}
-/>
-			*/
+
+
+	/*
+	
+*/		
