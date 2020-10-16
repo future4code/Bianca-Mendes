@@ -3,6 +3,25 @@ import './App.css'
 import Post from './components/Post/Post'
 import styled from "styled-components"
 
+const ContainerAddPost = styled.input `  //estilizar inputs
+    border: 1px solid gray;
+    width: 300px;
+    margin-bottom: 10px;
+`
+
+const BotaoAdd = styled.button `     //estilizar botão
+    border: 1px solid gray;
+    width: 300px;
+    margin-bottom: 10px;
+    height: 30px;
+    font-size: 20px;
+    background-color: white;
+    :active {
+      background-color: black;
+      color: white;
+    }
+    `
+
 
 class App extends React.Component {
   state = {
@@ -76,26 +95,29 @@ class App extends React.Component {
       })
 
       return (
-        <div>
-          <input          //para inserir input nome usuario
+        < div className= {"app-container"}>
+        
+          <ContainerAddPost         //para inserir input nome usuario
             value= {this.state.inputNomeUsuario}
             onChange= {this.onChangeInputusuario}
             placeholder= {"Nome Usuário"}
           />
 
-          <input
+          <ContainerAddPost
             value= {this.state.inputFotoUsuario}
             onChange= {this.onChangeInputFotoUsuario}
             placeholder= {"Foto Usuário"} 
           />
 
-          <input
+          <ContainerAddPost
             value= {this.state.inputFotoPost}
             onChange= {this.onChangeInputFotoPost}
             placeholder= {"Foto Post"}  
           />
-        <button onClick={this.adicionarPost}>Adicionar</button>
+        <BotaoAdd onClick={this.adicionarPost}>Adicionar</BotaoAdd>
+        
         <div>{listaComponentesPost}</div>
+        
         </div>
         
         
@@ -103,6 +125,11 @@ class App extends React.Component {
   
   }
 }
+
+
+
+
+
       export default App
       
         
