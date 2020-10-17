@@ -22,7 +22,8 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     marcador: false,
-    compartilhar: false
+    compartilhar: false,
+    comentarios: []
   }
 
   onClickCurtida = () => {
@@ -46,10 +47,16 @@ class Post extends React.Component {
     })
   }
 
-  aoEnviarComentario = () => {
-    this.setState({
+  aoEnviarComentario = (comentario) => {
+    const NovoComentario = comentario
+
+	 const Ncoment = [NovoComentario, ...this.state.comentarios]
+
+	  this.setState({
       comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      numeroComentarios: this.state.numeroComentarios + 1,
+      comentarios: Ncoment,
+      comentarioInput:""
     })
   }
 
@@ -86,6 +93,10 @@ class Post extends React.Component {
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
     }
+
+    const Comentarios = this.state.comentarios.map((comentario) => {
+			return <li>{comentario}</li>
+    })
 
     let iconeMarcacao   //adicionando variavel do icone de marcação
 
@@ -136,6 +147,7 @@ class Post extends React.Component {
 
       </div>
       {componenteComentario}
+      <div>{Comentarios}</div>
       {componenteCompartilhar }
     </div>
   }

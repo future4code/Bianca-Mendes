@@ -3,20 +3,10 @@ import './SecaoComentario.css'
 
 export class SecaoComentario extends Component {
 	state = {
-		comentarios: [],
 		comentarioInput: ""
 	}
 
-adicionarComentario = () => {
-	const NovoComentario = this.state.comentarioInput
 
-	const Ncoment = [NovoComentario, ...this.state.comentarios]
-
-	this.stateSet ({comentarios: Ncoment})
-	this.setState({comentarioInput:""})
-}
-	
-	
 	onChangeComentario = (event) => {
 		this.setState({                   //pra fazer o input funcionar
 			comentarioInput: event.target.value
@@ -25,17 +15,9 @@ adicionarComentario = () => {
 	}
 
 
-	onClickComentario = (event) => {
-		this.setState({                   
-			comentarios: event.target.value
-		})
-	}
-
+	
 	render() {
 
-		const Comentarios = this.state.comentarios.map((comentario) => {
-			return {comentario}
-		 })
 		
 		return <div className={'comment-container'}>
 			<input
@@ -46,8 +28,7 @@ adicionarComentario = () => {
 				
 			/>
 
-			<button onClick={this.props.aoEnviar || Comentarios}>Enviar</button>
-			<div>{Comentarios}</div>
-		</div>
+			<button onClick={() => {this.props.aoEnviar(this.state.comentarioInput)}}>Enviar</button>
+			</div>
 	}
 }
