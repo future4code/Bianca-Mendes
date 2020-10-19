@@ -49,7 +49,7 @@ onChangeInputNome = (event) => {
         escolaridade = "Ensino médio completo"
         break;
       case 3:
-        escolaridade = "Ensino superior incompleto"
+        escolaridade = "Ensino superior incompleto" 
         break;
       case 4:
         escolaridade = "Ensino superior completo"

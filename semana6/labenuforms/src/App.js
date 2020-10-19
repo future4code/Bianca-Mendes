@@ -42,11 +42,12 @@ class App extends React.Component {
       
         {trocaPagina()}
       
-          
-      <button onClick = {this.onClickProximaEtapa}>Próxima etapa</button>
+    {this.state.etapa !== 4 && <button onClick = {this.onClickProximaEtapa}>Próxima etapa</button> }
+      
+     
     </div>
     )
-    
+    //explicação botão: se a etapa 4 for diferente de 4, imprime o botão
 
 
 
@@ -56,3 +57,5 @@ class App extends React.Component {
 } //final classe
 
 export default App;
+
+
