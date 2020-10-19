@@ -47,7 +47,7 @@ class App extends React.Component {
      
     </div>
     )
-    //explicação botão: se a etapa 4 for diferente de 4, imprime o botão
+    //explicação botão: se a etapa 4 for diferente de 4, imprime o botão, se não o botão some 
 
 
 

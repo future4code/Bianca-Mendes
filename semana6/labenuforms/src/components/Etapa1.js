@@ -1,11 +1,12 @@
 import React from "react"
+import PerguntaAberta from "./PerguntaAberta"
 
 class Etapa1 extends React.Component {
+    /*
 state = {                //tudo que vai mudar qndo a pagina for renderizada
         valorInputNome: "",
         valorInputIdade: "",
-        valorInputEmail: "",
-        //valorInputEscolaridade: ""
+        valorInputEmail: ""
 }
 
 onChangeInputNome = (event) => {
@@ -28,36 +29,35 @@ onChangeInputNome = (event) => {
       valorInputEmail:""
       })
   }
-
-/*
-  onChangeInputEscolaridade = (event) => {
-    this.setState({
-      valorInputEscolaridade: event.target.valorInputEscolaridade
-    })
-  }
-  */
+*/
 
   render () {
-  /*
-    let escolaridade
-
-    switch(valorInputEscolaridade) {
-      case 1:
-        escolaridade = "Ensino médio incompleto"
-        break;
-      case 2:
-        escolaridade = "Ensino médio completo"
-        break;
-      case 3:
-        escolaridade = "Ensino superior incompleto" 
-        break;
-      case 4:
-        escolaridade = "Ensino superior completo"
-        break
-    }*/
-
+  
     return (
 
+<div>
+      <h2>ETAPA 1 - DADOS GERAIS</h2>
+      <PerguntaAberta pergunta={"1. Qual o seu nome?"} /> 
+      <PerguntaAberta pergunta={"2. Qual sua idade?"} />
+      <PerguntaAberta pergunta={"3. Qual seu email?"} />
+        
+        
+        
+      
+    </div>
+
+
+    )
+  }
+
+}
+
+export default Etapa1;
+
+
+
+
+/*
 <div>
       <h2>ETAPA 1 - DADOS GERAIS</h2>
       <ol>
@@ -94,11 +94,4 @@ onChangeInputNome = (event) => {
       </ol>
       
     </div>
-
-
-    )
-  }
-
-}
-
-export default Etapa1;
+    */

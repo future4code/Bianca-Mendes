@@ -48,3 +48,26 @@ render () {
 }
 
 export default Etapa2;
+
+
+/*
+<div>
+<h2>ETAPA 2 - INFORMAÇÕES DO ENSINO SUPERIOR</h2>
+<ol>
+  <li>
+    <label>Qual curso?</label>
+    <input
+    value= {this.state.valorInputCurso}
+    onChange= {this.state.onChangeInputCurso}
+    />
+  </li>
+  <li>
+    <label>Qual a unidade de ensino?</label>
+    <input
+    value= {this.state.valorInputUnidade}
+    onChange= {this.state.onChangeInputUnidade}
+    />
+  </li>
+</ol>
+</div>
+*/
