@@ -20,28 +20,23 @@ const InputsContainer = styled.div`
 
 class App extends React.Component {
     state = {
-      tarefas: [
-        {
-          id: Date.now(),
-          texto: "comprar maracujá",
-          completa: false
-        },
-        {
-          id: Date.now(),
-          texto: "comprar manga",
-          completa: true
-        }
-      ],
+      tarefas: [],
       inputValue: '',
       filtro: ""
     }
 
-  componentDidUpdate() {
+  
 
+  componentDidUpdate() {
+    localStorage.setItem("tarefas", JSON.stringify(this.state.tarefas))
+    console.log("testee")
   };
 
   componentDidMount() {
-
+    if (localStorage.getItem("tarefas")) {
+      this.setState({tarefas: JSON.parse(localStorage.getItem("tarefas"))})  
+      console.log("outrotesteee")  
+    }     
   };
 
   onChangeInput = (event) => {
@@ -49,7 +44,6 @@ class App extends React.Component {
       inputValue: event.target.value,
       
     })
-
   }
 
   criaTarefa = () => {
@@ -61,7 +55,10 @@ class App extends React.Component {
 
     const listaTarefas = [...this.state.tarefas, NovaTarefa]
 
-    this.setState({tarefas: listaTarefas})
+    this.setState({
+      tarefas: listaTarefas,
+      inputValue:""
+    })
 
   }
 
@@ -81,6 +78,10 @@ class App extends React.Component {
   }
 
   onChangeFilter = (event) => {
+    this.setState ({
+      filtro: event.target.value
+      
+    })
 
   }
 
