@@ -1,6 +1,7 @@
-import React from "react"
-import axios from "axios"
+import React from 'react'
+import axios from 'axios'
 import styled from "styled-components"
+
 
 
 
@@ -14,10 +15,32 @@ const axiosAuth = {
         Authorization: "bianca-mendes-dumont"
     }
 }
+const Xdelete = styled.span`
+color: red;
+font-weight: bold;
+margin-left: 08px;
+cursor: pointer;
+`
+const Parag = styled.p`
+cursor: pointer;
+`
+class Objeto {
+
+    constructor (name, id, email) {
+    this.name= name
+    this.id= id
+    this.email= email
+
+    }
+    
+}
 
 export default class UserList extends React.Component {
     state = {
-        users: []
+        users: [],
+        userDetail: [],
+        seeDetails: false
+        
     }
 componentDidMount = () => {
     this.getUsers()
@@ -46,25 +69,46 @@ deleteUser = (userId) => {
 
 }
 
+UserDetails = (userId) => {
 
+   userId = '52ef992d-bb2d-46b0-9ed8-ab941354707d'
+    axios.get (`${url}/${userId}`, axiosAuth) 
+        .then((response) => {
+            this.setState({userDetail: Object.values(response.data), seeDetails: true})
+            console.log(response)
+        }).catch((error) => {
+            console.log("erro detalhe usuario")
+        })
+    }
 
-
+botao = () => {
+    this.setState({
+        seeDetails: false
+    })
+}
 
   render () {
-    const renderList = this.state.users.map((user) => {
-        return <p key={user.id}>
-            {user.name}
-            
-            <span onClick= {() => this.deleteUser(user.id)}>X</span> 
-            
-            </p> //usa a arrow function pra não excluir todos os usuarios de uma vez
-    }) 
-
     
-
-    return (
+ 
+     return (
       <div>
-        {renderList}
+          <h2>LISTA USUÁRIOS CADASTRADOS</h2>
+        {!this.state.seeDetails ? this.state.users.map((user) => {
+        return <Parag  key={user.id}>
+            
+            <div onClick= {() => this.UserDetails(user.id)} key={user.id}> {user.name}</div>
+            <Xdelete onClick= {() => this.deleteUser(user.id)}>X</Xdelete> 
+            </Parag> //usa a arrow function pra não excluir todos os usuarios de uma vez
+    }) : <h1>{this.state.userDetail[0]} - {this.state.userDetail[1]} - {this.state.userDetail[2]}</h1>
+      
+}
+
+
+<button onClick = {this.botao}>OI</button>
+        
+
+        
+                
         
       </div>
 

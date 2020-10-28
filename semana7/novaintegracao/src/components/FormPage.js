@@ -3,6 +3,11 @@ import axios from "axios"
 import styled from "styled-components"
 
 
+const InputForm = styled.input `
+display:block;
+margin: 10px;
+`
+
 export default class FormPage extends React.Component {
     state = {
         nameValue: "",
@@ -46,12 +51,13 @@ onChangeEmailValue = (event) => {
   render () {
     return (
       <div>
-        <input
+        <h2> PÁGINA DE CADASTRO</h2>
+        <InputForm
         placeholder= "Digite seu nome"
         value = {this.state.nameValue}
         onChange= {this.onChangeNameValue}
         />
-        <input
+        <InputForm
         placeholder= "Digite seu email"
         value = {this.state.emailValue}
         onChange= {this.onChangeEmailValue}

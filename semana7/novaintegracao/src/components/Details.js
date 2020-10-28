@@ -13,31 +13,16 @@ const axiosAuth = {
 }
 
 export default class Details extends React.Component {
-    state = {
-        users: [],
-    }
+    
 
 
-
-UserDetails = (userId) => {
-    axios.get (`${url}/${userId}`, axiosAuth) 
-        .then((response) => {
-            this.setState({users: response.data})
-            console.log(response)
-        }).catch((error) => {
-            console.log("erro detalhe usuario")
-        })
-    }
     render () {
 
-        const details = this.state.users.map((user) => {
-            return <p key={user.id}>
-                {user.name} {user.email}
-                </p>
-        })
-
-        return (
-            {details}
+        return(
+            <></>
         )
+           
+
+        
     }
 }
