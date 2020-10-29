@@ -6,6 +6,7 @@ export class SecaoComentario extends Component {
 		comentarioInput: ""
 	}
 
+
 	onChangeComentario = (event) => {
 		this.setState({                   //pra fazer o input funcionar
 			comentarioInput: event.target.value
@@ -13,15 +14,21 @@ export class SecaoComentario extends Component {
 		console.log(event.target.value) //apenas pra verificar se ta salvando o comentário
 	}
 
+
+	
 	render() {
+
+		
 		return <div className={'comment-container'}>
 			<input
 				className={'input-comentario'}
 				placeholder={'Comentário'}
 				value={this.state.comentarioInput}
 				onChange={this.onChangeComentario}
+				
 			/>
-			<button onClick={this.props.aoEnviar}>Enviar</button>
-		</div>
+
+			<button onClick={() => {this.props.aoEnviar(this.state.comentarioInput)}}>Enviar</button>
+			</div>
 	}
 }
