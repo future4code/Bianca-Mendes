@@ -69,8 +69,8 @@ export default class App extends React.Component{
         <div>{this.choosePage()}</div>
       </AppContainer>
       
-    )//fechamento return 
-  }//fechamento render
+    ) 
+  }
 
-}//fechamento class
+}
 

@@ -52,7 +52,7 @@ export default class Details extends React.Component{
          <BackBut onClick= {this.props.backPage}>Voltar para Playlists</BackBut>
       </Musicbox>
       
-    )//fechamento return 
-  }//fechamento render
+    ) 
+  }
 
-}//fechamento class
+}

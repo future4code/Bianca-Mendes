@@ -70,7 +70,7 @@ export default class CreatePlaylist extends React.Component{
         <CreateBut onClick = {this.createPlaylist}>Criar Playlist</CreateBut>
       </AddPlaylist>
       
-    )//fechamento return 
-  }//fechamento render
+    ) 
+  }
 
-}//fechamento class
+}

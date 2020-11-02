@@ -41,7 +41,6 @@ export default class Playlists extends React.Component{
     seeDet: false,
     tracksList:[],
     namePlaylist: "",
-    //seeAdd: false
     playlistId: "", //pra puxar os detalhes 
     
   }
@@ -75,13 +74,6 @@ export default class Playlists extends React.Component{
       this.setState({seeDet: true})
     }
 
-//mostrar input add musica
-
-//seeInputAddMusic = () => {
-  //this.setState({
-    //seeAdd: true
-  //})
-//}
 //puxar as musicas das playlists    
   playlistTracks = (playlistId, name) => {
        this.seeDetails()
@@ -100,7 +92,7 @@ export default class Playlists extends React.Component{
       })
    }
 
-
+  
   render () {
         
       //console.log(this.state.userPlaylist,"outro teste")
@@ -125,15 +117,12 @@ export default class Playlists extends React.Component{
         tracksList={this.state.tracksList}
         namePlaylist={this.state.namePlaylist}
         playlistId={this.state.playlistId}
-        //addSong={this.seeInputAddMusic}
         />      
-          
-         : <></>}
-
+        : <></>}
       </div>
       
-    )//fechamento return 
-  }//fechamento render
+    )
+  }
 
-}//fechamento class
+}
 
