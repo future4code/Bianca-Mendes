@@ -1,34 +1,28 @@
-import React, {useState, useEffect} from 'react'
-import styled from "styled-components"
+import React, { useState, useEffect } from 'react'
 import {PostContainer} from "./styles"
 import {baseUrl} from "../../constants/url"
 import axios from 'axios'
 import Profile from '../Profile/Profile'
 import Matchs from '../Matchs/Matchs'
+import Header from '../Header/Header'
 
 
-export default function ChooseProfile() {
+export default function ChooseProfile(props) {
  const [profile, setProfile] = useState([])
  const [matchs, setMatchs] = useState(false) //pra renderizar os matchs
- //const [clear, setClear] = useState("")
-
-
+    
 //faz requisição dos perfis(todos) para a API
-   const getProfileToChoose = () => {
+    const getProfileToChoose = () => {
         axios.get(`${baseUrl}person`)
-        .then(response => {
-            setProfile(response.data.profile)
-            console.log("certinho")
-        }).catch(error => {console.log(error, "deu ruim!")})
+            .then(response => {
+                setProfile(response.data.profile)
+            }).catch(error => {console.log(error)})
     }
 
-
 //monta renderização dos perfis 
-    useEffect( () => {
+    useEffect(() => {
         getProfileToChoose()
-        console.log("montando")
-    }, ([]))
-    
+    }, ([]))  //props.renderChooseProfile tava dentro 
 
 //guarda na API o perfil escolhido(botão oh yes)    
     const choosePerson = () => {
@@ -38,69 +32,50 @@ export default function ChooseProfile() {
         }
 
         axios.post(`${baseUrl}choose-person`, body)
-        .then(() => {
-            alert("Deu Match!")
-            getProfileToChoose() //pra em seguida já aparecer outro perfil
-            console.log("certoooo")
-        }).catch(err => {console.log(err, "ruim de novo")})
+            .then(() => {
+                alert("Será que vai dar match?!")
+                getProfileToChoose() //pra em seguida já aparecer outro perfil
+            }).catch(err => {console.log(err)})
     }
-
 
 //pra chamar a função e continuar mostrando os perfis, da pra fazer sem essa parte que tbm funciona     
     const dontChoosePerson = () => {
-       getProfileToChoose()
+        getProfileToChoose()
     }
-
 
     const allMatchs = () => {
-       setMatchs(!matchs) // pra transformar o match em true e mostrar as infos
+        setMatchs(!matchs) // pra transformar o match em true e mostrar as infos
     }
-
 
 //requisição para limpar a API com todos os matchs
-    const clearMatchs = () => {
+    const clearMatchs = (props) => {
         axios.put(`${baseUrl}clear`)
-        .then(() => {
-            alert("Perfis e matchs apagados!")
-            //allMatchs()
-            console.log("apagou")
-        }).catch(err => {console.log(err, "não apagou")})
+            .then(() => {
+                alert("Perfis e matchs apagados!")
+                allMatchs()
+            }).catch(err => {console.log(err)})
     }
-
 
     return (
         <PostContainer>
-        
-    {matchs ?
-        <Matchs
-            backPage={allMatchs}
-            matchs = {matchs}
-            clearMatchs ={clearMatchs}
-        />
-     :  <Profile
-            name={profile.name}
-            age={profile.age}
-            bio={profile.bio}
-            photo={profile.photo}    
-        /> 
-    } 
-        
-        <div>
-        <button onClick={choosePerson}>OH YES</button>
-        <button onClick={dontChoosePerson}>NOPE</button>
-        <button onClick={allMatchs}>MATCHS</button>
-        <button onClick={clearMatchs}>LIMPAR</button>
-        </div>
+            <Header />
+            {matchs ?
+                <Matchs
+                    backPage={allMatchs}
+                    matchs={matchs}
+                    clearMatchs={clearMatchs}
+                />
+                : <Profile
+                    name={profile.name}
+                    age={profile.age}
+                    bio={profile.bio}
+                    photo={profile.photo}
+                    choosePerson={choosePerson}
+                    dontChoosePerson={dontChoosePerson}
+                    allMatchs={allMatchs}
+                    clearMatchs={clearMatchs}
+                />
+            }
         </PostContainer>
     )
 }
-
-/* 
-erros e acertos e anotações gerais: 
-1.axios.get(`${baseUrl}/person`) coma barra não ia, tirei a barra e funcionou. PQ?!
-resposta: na url eu já tinha deixado a barra, tapada!
-
-2.criei uma constante chamando a função pro nome no onClick ficar mais rápido de entender
-
-3. pra mostrar a list de match, fiz a mesma coisa que no trabalho da labefy
-*/

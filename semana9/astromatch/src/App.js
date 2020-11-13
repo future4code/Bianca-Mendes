@@ -1,22 +1,21 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
 import styled from "styled-components"
-import ChooseProfile from './components/ChooseProfile/ChooseProfile';
+import Home from './components/Home/Home';
 
-const AppContainer = styled.div `
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+const AppContainer = styled.div`
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center;
 `
-
 
 function App() {
   return (
     <AppContainer>
-      <ChooseProfile/>
+        <Home/>
     </AppContainer>
-  );
+  )
 }
 
-export default App;
+export default App
