@@ -12,15 +12,15 @@ const TripsManagerHomePage = () => {
         history.push("/managerarea/analytcs")
     }
 
-    const goToLoginPage = () => {
-        history.push("/login")
+    const goToAllTrips = () => {
+        history.push("/alltrips")
     }
     return (
     <div>
         <div>lista de viagens</div>
         <button onClick={goToCreatePage}>CRIAR VIAGENS</button>
         <button onClick={goToAnalytcsPage}>ANALISAR PEDIDOS</button>
-        <button onClick={goToLoginPage} >VOLTAR</button>
+        <button onClick={goToAllTrips} >SAIR</button>
     </div>
   )
 }

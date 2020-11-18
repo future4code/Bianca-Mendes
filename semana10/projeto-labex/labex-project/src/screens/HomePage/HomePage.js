@@ -1,6 +1,6 @@
 import React from "react"
 import {useHistory} from "react-router-dom"
-
+import {ButtonSignIn, Container, ButtonTrips} from "./styles"
 const HomePage = () => {
     const history = useHistory()
 
@@ -13,11 +13,10 @@ const HomePage = () => {
     }
 
     return(
-        <div>
-            <div>teste</div>
-            <button onClick={goToLoginPage}>LOGIN</button>
-            <button onClick={goToTripsPage}>VER VIAGENS</button>
-        </div>
+        <Container>
+            <ButtonSignIn onClick={goToLoginPage}>LOGIN</ButtonSignIn>
+            <ButtonTrips onClick={goToTripsPage}>VER VIAGENS</ButtonTrips>
+        </Container>
     )
 }
 

@@ -8,6 +8,7 @@ import TripsManagerHomePage from "../screens/TripsManagerHomePage/TripsManagerHo
 import CreateTripPage from "../screens/CreateTripPage/CreateTripPage"
 import TripAnalytcsPage from "../screens/TripsAnalytcsPage/TripsAnalyctsPage"
 import Footer from "../components/Footer/Footer"
+import TripCardDetailsPage from "../screens/TripCardDetailsPage/TripCardDetailsPage"
 
 export default function Router() {
     return (
@@ -21,7 +22,10 @@ export default function Router() {
                     <AllTripsPage/>
                     <Footer/>
                 </Route>
-                <Route exact path="/alltrips/applicationform">
+                <Route exact path="/alltrips/details">
+                    <TripCardDetailsPage/>
+                </Route>
+                <Route exact path="/alltrips/details/applicationform/:id">
                     <FormPage/>
                     <Footer/>
                 </Route>
@@ -34,7 +38,7 @@ export default function Router() {
                 <Route exact path="/managerarea/create">
                     <CreateTripPage/>
                 </Route>
-                <Route exact path="/managerarea/analytcs">
+                <Route exact path="/managerarea/analytcs/:id">
                     <TripAnalytcsPage/>
                 </Route>
             </Switch>

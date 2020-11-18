@@ -1,22 +1,50 @@
-import React, {useState} from "react"
-import axios from "axios"
+import React, {useState, useEffect, useParams} from "react"
 import {useInput} from "../../hooks/useInput"
 import {FormContainer, Input} from "./styles"
 import {useHistory} from "react-router-dom"
+import {baseUrl} from "../../constants/url"
+import axios from "axios"
 
-const FormPage= () => {
+const FormPage= (props) => {
   const [name, setName] = useInput()
   const [age, setAge] = useInput()
   const [applicationText, setApplicationText] = useInput()
   const [profession, setProfession] = useInput()
+  const [country, setCountry] = useState(null)
   const history = useHistory()
+  const pathParams = useParams()
+  const id = pathParams.id
+  //const {id} = useParams()
   
-    
-
+//rota para voltar lista viagens   
     const goToAllTripsPage = () => {
         history.push("/alltrips")
     }
-   return(
+
+//requisição aplicação viagem
+    const applyToTrip = () => {
+        console.log("teste", applyToTrip)
+        const body = {
+            name:name,
+            age:age,
+            applicationText:applicationText,
+            profession:profession,
+            country: country
+        }
+        axios.post(`${baseUrl}trips/${id}/apply`, body)
+        .then(() => {
+            alert("Cadastro efetuado com sucesso")
+            console.log("yeeey")
+        }).catch(error => {
+            alert("Erro ao cadastrar. Tente novamente.")
+            console.log(error, "ruuuuuim!")
+        } )
+    }
+    
+    const handleSelect = (event) => {
+        setCountry(event.target.value)
+      }
+     return(
        <div>
         <FormContainer>
             <Input
@@ -44,7 +72,7 @@ const FormPage= () => {
             value={profession}
             onChange={setProfession}
             />
-            <select>
+            <select onChange={handleSelect}>
             <option value="país">Pais</option>  
             <option value={"Brasil"}>Brasil</option>
             <option value={"Argentina"}>Argentina</option>
@@ -62,7 +90,7 @@ const FormPage= () => {
             </select>
            
         </FormContainer>
-         <button>ENVIAR</button>
+         <button onClick={applyToTrip}>ENVIAR</button>
          <button onClick={goToAllTripsPage}>VOLTAR</button>
          </div>
     )
