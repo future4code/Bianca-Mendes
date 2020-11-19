@@ -56,13 +56,18 @@ const CreateTripPage = () => {
               durationInDays: durationInDays
           }
 
-          axios.post(`${baseUrl}trips`, body)
+          axios.post(`${baseUrl}trips`, body,  {
+            headers: {
+              auth: localStorage.getItem("token")
+            }
+          })
           .then((res) => {
-            localStorage.setItem("token", res.data.trip)
-            history.push("/managerarea/create")
+            alert("Cadastro efetuado com sucesso")
+            console.log("yeeey")
           })
           .catch((err) => {
-              console.log(err)
+              console.log(err, "deu ruim")
+              alert("Erro ao cadastrar. Tente novamente.")
           })
       }
 
@@ -72,26 +77,31 @@ const CreateTripPage = () => {
         <div>criar viagens</div>
         <input
         value={name}
+        placeholder="Nome da viagem"
         type="text"
         onChange={handleName}
         />
         <input
         value={planet}
+        placeholder="Planeta"
         type="text"
         onChange={handlePlanet}
         />
          <input
         value={date}
-        type="text"
+        placeholder="Data"
+        type="date"
         onChange={handleDate}
         />
         <input
         value={description}
+        placeholder="Descrição"
         type="text"
         onChange={handleDescription}
         />
         <input
         value={durationInDays}
+        placeholder="Duração em dias"
         type="text"
         onChange={handleDuration}
         />

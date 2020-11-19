@@ -13,10 +13,10 @@ const FormPage= () => {
   const [profession, setProfession] = useInput({})
   const [country, setCountry] = useState(null)
   const history = useHistory()
-   const pathParams = useParams()
+  const pathParams = useParams()
   const id = pathParams.id
- // const {id} = useParams()
-  console.log(id)
+ 
+  
 //rota para voltar lista viagens   
     const goToAllTripsPage = () => {
         history.push("/alltrips")
@@ -42,9 +42,9 @@ const FormPage= () => {
         } )
     }
     
-    const handleSelect = (event) => {
+        const handleSelect = (event) => {
         setCountry(event.target.value)
-      }
+    }
      return(
        <div>
         <FormContainer>

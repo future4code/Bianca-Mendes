@@ -9,6 +9,7 @@ const TripsAnalyticsPage = () => {
  const [trip,setTrip] = useState({})
  const pathParams = useParams()
  const id = pathParams.id
+ 
 
  useEffect(() => {
     getTripDetail()
@@ -26,12 +27,42 @@ const TripsAnalyticsPage = () => {
         }
       )
       .then((res) => {
-        console.log(setTrip, "teste")
         setTrip(res.data.trip)
       })
       .catch((err) => {
         console.log(err)
       })
+  }
+
+   const decideCandidate = (candidateId) => {
+     
+      const body = {
+        approve: true
+      }
+    axios
+      .put(`${baseUrl}trips/${id}/candidates/${candidateId}/decide`, body, 
+      {
+        headers: {
+          auth: localStorage.getItem("token")
+        }
+      }
+      )
+      .then(() => {
+       // alert("Candidato aceito")
+        //getTripDetail()
+        console.log("yeeey")
+    }).catch(error => {
+       // alert("Candidato recusado.")
+        console.log(error, "ruuuuuim!")
+    } )
+   }
+
+   const aprovedCandidate = (candidateId) => {
+     decideCandidate(true, candidateId)
+   }
+
+   const rejectedCandidate = (candidateId) => {
+    decideCandidate(false, candidateId)
   }
     const goToTripsManagerPage = () => {
         history.push("/managerarea")
@@ -45,11 +76,16 @@ const TripsAnalyticsPage = () => {
         <p>{trip.description}</p>
         {trip.candidates && trip.candidates.map((candidate) => {
           return (<div>
+            <p>{candidate.id}</p>
             <p>{candidate.name}</p>
             <p>{candidate.applicationText}</p>
             <p>{candidate.profession}</p>
             <p>{candidate.age}</p>
             <p>{candidate.country}</p>
+            <button onClick={aprovedCandidate}>ACEITAR</button>
+            <button onClick={rejectedCandidate}>REJEITAR</button>
+            {/* <button onClick={() => {decideCandidate(true, candidate.id)}}>ACEITAR CANDIDATO</button>
+            <button onClick={() => {decideCandidate(false, candidate.id)}}>RECUSAR CANDIDATO</button> */}
             </div>
           )
         })}
@@ -59,6 +95,7 @@ const TripsAnalyticsPage = () => {
                           
             
         
+       
         <button onClick={goToTripsManagerPage}>VOLTAR</button>
     </div>
   )
