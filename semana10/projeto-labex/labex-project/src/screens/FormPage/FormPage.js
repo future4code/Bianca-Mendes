@@ -1,21 +1,22 @@
-import React, {useState, useEffect, useParams} from "react"
+import React, {useState} from "react"
 import {useInput} from "../../hooks/useInput"
 import {FormContainer, Input} from "./styles"
-import {useHistory} from "react-router-dom"
+import {useHistory, useParams} from "react-router-dom"
 import {baseUrl} from "../../constants/url"
 import axios from "axios"
 
-const FormPage= (props) => {
-  const [name, setName] = useInput()
-  const [age, setAge] = useInput()
-  const [applicationText, setApplicationText] = useInput()
-  const [profession, setProfession] = useInput()
+
+const FormPage= () => {
+  const [name, setName] = useInput({})
+  const [age, setAge] = useInput({})
+  const [applicationText, setApplicationText] = useInput({})
+  const [profession, setProfession] = useInput({})
   const [country, setCountry] = useState(null)
   const history = useHistory()
-  const pathParams = useParams()
+   const pathParams = useParams()
   const id = pathParams.id
-  //const {id} = useParams()
-  
+ // const {id} = useParams()
+  console.log(id)
 //rota para voltar lista viagens   
     const goToAllTripsPage = () => {
         history.push("/alltrips")

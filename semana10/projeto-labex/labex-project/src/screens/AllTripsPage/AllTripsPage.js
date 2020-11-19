@@ -34,7 +34,7 @@ const AllTripsPage = () => {
                 )
             }) }      
             <button onClick={goToHomePage}>VOLTAR</button>
-    </ScreenContainer>
+        </ScreenContainer>
   )
 }
 

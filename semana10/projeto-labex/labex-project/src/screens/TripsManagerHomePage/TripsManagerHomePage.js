@@ -1,15 +1,21 @@
-import React from "react"
-import {useHistory} from "react-router-dom"
+import React, {useState} from "react"
+import {useHistory, useParams} from "react-router-dom"
+import {useRequestData} from "../../hooks/useRequestData"
+import { baseUrl } from "../../constants/url"
+
 
 const TripsManagerHomePage = () => {
-    const history = useHistory()
+ const history = useHistory()
+ 
+    const getTrips = useRequestData(`${baseUrl}trips`,undefined)
+
+    const detailsCandidates = (id) => {
+        history.push(`/managerarea/analytics/${id}`)
+       
+    }
 
     const goToCreatePage = () => {
         history.push("/managerarea/create")
-    }
-
-    const goToAnalytcsPage = () => {
-        history.push("/managerarea/analytcs")
     }
 
     const goToAllTrips = () => {
@@ -18,8 +24,15 @@ const TripsManagerHomePage = () => {
     return (
     <div>
         <div>lista de viagens</div>
+        {getTrips && getTrips.trips.map((item) => {  
+                return (
+                    <p onClick={() => detailsCandidates(item.id)}>
+                      {item.name}
+                    </p>
+                )
+            })}     
+
         <button onClick={goToCreatePage}>CRIAR VIAGENS</button>
-        <button onClick={goToAnalytcsPage}>ANALISAR PEDIDOS</button>
         <button onClick={goToAllTrips} >SAIR</button>
     </div>
   )
