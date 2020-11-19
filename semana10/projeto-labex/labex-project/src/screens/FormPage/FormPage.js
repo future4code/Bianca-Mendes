@@ -53,6 +53,7 @@ const FormPage= () => {
             type="text"
             value={name}
             onChange={setName}
+            pattern="[A-Za-z]{3,}"
             />
             <Input
             placeholder="Idade"
@@ -66,12 +67,14 @@ const FormPage= () => {
             type="text"
             value={applicationText}
             onChange={setApplicationText}
+            pattern="[A-Za-z]{30,}"
             />
             <Input
             placeholder="Profissão"
             type="text"
             value={profession}
             onChange={setProfession}
+            pattern="[A-Za-z]{10,}"
             />
             <select onChange={handleSelect}>
             <option value="país">Pais</option>  

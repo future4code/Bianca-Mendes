@@ -57,6 +57,7 @@ const TripsAnalyticsPage = () => {
     } )
    }
 
+   
    const aprovedCandidate = (candidateId) => {
      decideCandidate(true, candidateId)
    }

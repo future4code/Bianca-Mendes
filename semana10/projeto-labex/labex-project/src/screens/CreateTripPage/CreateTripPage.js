@@ -6,10 +6,10 @@ import axios from "axios"
 const CreateTripPage = () => {
  const history = useHistory()
  const [name, setName] = useState("")
- const [planet, setPlanet] = useState("")
  const [date, setDate] = useState("")
  const [description, setDescription] = useState("")
  const [durationInDays, setDurationInDays] = useState("")
+ const [planet, setPlanet] = useState(null)
 
     const goToTripsManagerPage = () => {
         history.push("/managerarea")
@@ -17,10 +17,6 @@ const CreateTripPage = () => {
 
     const handleName = (e) => {
         setName(e.target.value)
-    }
-
-    const handlePlanet = (e) => {
-        setPlanet(e.target.value)
     }
 
     const handleDate = (e) => {
@@ -35,7 +31,9 @@ const CreateTripPage = () => {
         setDurationInDays(e.target.value)
     }
 
-    
+    const handleSelect = (event) => {
+        setPlanet(event.target.value)
+    }
     useEffect(() => {
         const token = localStorage.getItem("token")
     
@@ -80,14 +78,9 @@ const CreateTripPage = () => {
         placeholder="Nome da viagem"
         type="text"
         onChange={handleName}
+        pattern="[A-Za-z]{5,}"
         />
         <input
-        value={planet}
-        placeholder="Planeta"
-        type="text"
-        onChange={handlePlanet}
-        />
-         <input
         value={date}
         placeholder="Data"
         type="date"
@@ -98,13 +91,27 @@ const CreateTripPage = () => {
         placeholder="Descrição"
         type="text"
         onChange={handleDescription}
+        pattern="[A-Za-z]{30,}"
         />
         <input
         value={durationInDays}
+        min="50"
         placeholder="Duração em dias"
         type="text"
         onChange={handleDuration}
         />
+         <select onChange={handleSelect}>
+            <option value="país">Planeta</option>  
+            <option value={"Mercúrio"}>Mercúrio</option>
+            <option value={"Vênus"}>Vênus</option>
+            <option value={"Terra"}>Terra</option>
+            <option value={"Marte"}>Marte</option>
+            <option value={"Júpiter"}>Júpiter</option>        
+            <option value={"Saturno"}>Saturno</option>
+            <option value={"Urano"}>Urano</option>
+            <option value={"Netuno"}>Netuno</option>
+            <option value={"Plutão"}>Plutão</option>
+        </select>
         <button onClick={createTrip}>CRIAR VIAGENS</button>
         <button onClick={goToTripsManagerPage} >VOLTAR</button>
     </div>
