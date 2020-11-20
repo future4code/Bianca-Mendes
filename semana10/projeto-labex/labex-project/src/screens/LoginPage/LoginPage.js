@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import {useHistory} from "react-router-dom"
 import {baseUrl} from "../../constants/url"
 import axios from "axios"
+import {Login, Input, ButtonSignIn, ButtonBack} from "./styles"
 
 export function LoginPage() {
  const history = useHistory()
@@ -48,19 +49,21 @@ export function LoginPage() {
 
         return (
             <div>
-              <div>login</div>
-              <input
+              <Login>LOGIN</Login>
+              <Input
                 value={email}
                 type="email"
+                placeholder="E-mail"
                 onChange={handleEmail}
               />
-              <input
+              <Input
                 value={password}
                 type="password"
+                placeholder="Senha"
                 onChange={handlePassword}
               />
-              <button onClick={goToTripsManagerPage}>ENTRAR</button>
-              <button onClick={goToHomePage}>VOLTAR</button>  
+              <ButtonSignIn onClick={goToTripsManagerPage}>ENTRAR</ButtonSignIn>
+              <ButtonBack onClick={goToHomePage}>VOLTAR</ButtonBack>  
             </div>
   )
 }

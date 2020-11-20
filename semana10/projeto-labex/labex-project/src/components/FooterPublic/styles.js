@@ -14,7 +14,7 @@ export const Logo = styled.img`
  `
 
 export const FooterContainer = styled.div`
- background-color: #33087A;  
+ background-color: #264653;  
  height: 8em;
  width: 100%;
  position: fixed;

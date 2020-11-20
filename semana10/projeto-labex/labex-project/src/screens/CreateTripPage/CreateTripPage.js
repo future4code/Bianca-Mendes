@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react"
 import {useHistory} from "react-router-dom"
 import {baseUrl} from "../../constants/url"
 import axios from "axios"
+import {Title, ContainerCreateTrip, Input, InputDescription, PlanetSelect, CreateTripButton, BackButton} from "./styles"
+import { ButtonContainer } from "../../components/TripCard/styles"
 
 const CreateTripPage = () => {
  const history = useHistory()
@@ -71,36 +73,37 @@ const CreateTripPage = () => {
 
 
         return (
-    <div>
-        <div>criar viagens</div>
-        <input
+    <ContainerCreateTrip>
+        <Title>CRIAR VIAGENS</Title>
+        <Input
         value={name}
         placeholder="Nome da viagem"
         type="text"
         onChange={handleName}
-        pattern="[A-Za-z]{5,}"
+        pattern=" [A-z0-9À-ž\s]{5,}"
         />
-        <input
+        <Input
         value={date}
+        min="2021-01-01"
         placeholder="Data"
         type="date"
         onChange={handleDate}
         />
-        <input
+        <InputDescription
         value={description}
         placeholder="Descrição"
         type="text"
         onChange={handleDescription}
-        pattern="[A-Za-z]{30,}"
+        pattern= "[A-z0-9À-ž\s]{30,}"
         />
-        <input
+        <Input
         value={durationInDays}
         min="50"
         placeholder="Duração em dias"
         type="text"
         onChange={handleDuration}
         />
-         <select onChange={handleSelect}>
+         <PlanetSelect onChange={handleSelect}>
             <option value="país">Planeta</option>  
             <option value={"Mercúrio"}>Mercúrio</option>
             <option value={"Vênus"}>Vênus</option>
@@ -111,10 +114,12 @@ const CreateTripPage = () => {
             <option value={"Urano"}>Urano</option>
             <option value={"Netuno"}>Netuno</option>
             <option value={"Plutão"}>Plutão</option>
-        </select>
-        <button onClick={createTrip}>CRIAR VIAGENS</button>
-        <button onClick={goToTripsManagerPage} >VOLTAR</button>
-    </div>
+        </PlanetSelect>
+        <ButtonContainer>
+        <CreateTripButton onClick={createTrip}>CRIAR VIAGENS</CreateTripButton>
+        <BackButton onClick={goToTripsManagerPage} >VOLTAR</BackButton>
+        </ButtonContainer>
+    </ContainerCreateTrip>
   )
 }
 

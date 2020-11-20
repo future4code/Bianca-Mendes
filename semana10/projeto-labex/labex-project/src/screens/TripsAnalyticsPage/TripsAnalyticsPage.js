@@ -2,21 +2,21 @@ import axios from "axios"
 import React, { useState, useEffect } from "react"
 import {useHistory, useParams} from "react-router-dom"
 import {baseUrl} from "../../constants/url"
+import {Title, TripName, TripDetails, ContainerDetails, DetailsContainer, CandidateDetails, CandidateDetail,  ApproveButton, RejectButton, BackButton, ApprovedContainer, TitleApproved, NameCandidate} from "./styles"
 
 
-const TripsAnalyticsPage = () => {
+const TripsAnalyticsPage = (props) => {
  const history = useHistory()
  const [trip,setTrip] = useState({})
  const pathParams = useParams()
  const id = pathParams.id
  
 
- useEffect(() => {
+  useEffect(() => {
     getTripDetail()
   }, [])
 
  const getTripDetail = () => {
-   
     axios
       .get(
         `${baseUrl}trip/${id}`,
@@ -34,10 +34,12 @@ const TripsAnalyticsPage = () => {
       })
   }
 
-   const decideCandidate = (candidateId) => {
-     
+  const decideCandidate = (approved,candidateId) => {
+    
+      //setApproved(!approved)
+
       const body = {
-        approve: true
+        approve: approved
       }
     axios
       .put(`${baseUrl}trips/${id}/candidates/${candidateId}/decide`, body, 
@@ -48,46 +50,49 @@ const TripsAnalyticsPage = () => {
       }
       )
       .then(() => {
-       // alert("Candidato aceito")
-        //getTripDetail()
+        //setApproved(response.data)
+        getTripDetail()
         console.log("yeeey")
     }).catch(error => {
-       // alert("Candidato recusado.")
         console.log(error, "ruuuuuim!")
     } )
    }
 
    
-   const aprovedCandidate = (candidateId) => {
-     decideCandidate(true, candidateId)
-   }
-
-   const rejectedCandidate = (candidateId) => {
-    decideCandidate(false, candidateId)
-  }
     const goToTripsManagerPage = () => {
         history.push("/managerarea")
     }
 
-        return (
-    <div>
-        <div>analisar viagens</div>
-        <p>{trip.name}</p>
-        <p>{trip.planet}</p>
-        <p>{trip.description}</p>
+    return (
+    <DetailsContainer>
+        <Title>DETALHES VIAGEM</Title>
+        <TripName>{trip.name}</TripName>
+        <ContainerDetails>
+        <TripDetails>Descrição: {trip.description}</TripDetails>
+        <TripDetails>Planeta: {trip.planet}</TripDetails>
+        <TripDetails>Duração: {trip.durationInDays} dias</TripDetails>
+        <TripDetails>Data: {trip.date}</TripDetails>
+        </ContainerDetails>
+        <ApprovedContainer>
+          <TitleApproved>Aprovados</TitleApproved>
+          {trip.approved && trip.approved.map((candidate) => {
+            return ( <NameCandidate>
+              {candidate.name}
+              </NameCandidate>
+            )
+          })}
+        </ApprovedContainer>
         {trip.candidates && trip.candidates.map((candidate) => {
-          return (<div>
-            <p>{candidate.id}</p>
-            <p>{candidate.name}</p>
-            <p>{candidate.applicationText}</p>
-            <p>{candidate.profession}</p>
-            <p>{candidate.age}</p>
-            <p>{candidate.country}</p>
-            <button onClick={aprovedCandidate}>ACEITAR</button>
-            <button onClick={rejectedCandidate}>REJEITAR</button>
-            {/* <button onClick={() => {decideCandidate(true, candidate.id)}}>ACEITAR CANDIDATO</button>
-            <button onClick={() => {decideCandidate(false, candidate.id)}}>RECUSAR CANDIDATO</button> */}
-            </div>
+           return (
+           <CandidateDetails key={candidate.id}>
+              <CandidateDetail>Nome: {candidate.name}</CandidateDetail>
+              <CandidateDetail>Texto inscrição: {candidate.applicationText}</CandidateDetail>
+              <CandidateDetail>Profissão: {candidate.profession}</CandidateDetail>
+              <CandidateDetail>Idade: {candidate.age}</CandidateDetail>
+              <CandidateDetail>País: {candidate.country}</CandidateDetail>
+              <ApproveButton onClick={() => {decideCandidate(true, candidate.id)}}>ACEITAR</ApproveButton>
+              <RejectButton  onClick={ () => {decideCandidate(false, candidate.id)}}>REJEITAR</RejectButton>
+           </CandidateDetails>
           )
         })}
         
@@ -97,8 +102,8 @@ const TripsAnalyticsPage = () => {
             
         
        
-        <button onClick={goToTripsManagerPage}>VOLTAR</button>
-    </div>
+        <BackButton onClick={goToTripsManagerPage}>VOLTAR</BackButton>
+    </DetailsContainer>
   )
 }
 

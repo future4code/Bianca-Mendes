@@ -5,6 +5,7 @@ export function useInput() {
 
   const handleInput = (event) => {
     setInput(event.target.value)
+   
   }
 
   return [input, handleInput]

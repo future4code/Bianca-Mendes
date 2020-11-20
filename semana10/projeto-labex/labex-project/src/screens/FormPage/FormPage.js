@@ -1,12 +1,12 @@
 import React, {useState} from "react"
 import {useInput} from "../../hooks/useInput"
-import {FormContainer, Input} from "./styles"
+import {FormContainer, Input, Select, Title, SendButton, BackButton, ButtonContainer, InputDescription} from "./styles"
 import {useHistory, useParams} from "react-router-dom"
 import {baseUrl} from "../../constants/url"
 import axios from "axios"
 
 
-const FormPage= () => {
+const FormPage= (props) => {
   const [name, setName] = useInput({})
   const [age, setAge] = useInput({})
   const [applicationText, setApplicationText] = useInput({})
@@ -16,6 +16,7 @@ const FormPage= () => {
   const pathParams = useParams()
   const id = pathParams.id
  
+  
   
 //rota para voltar lista viagens   
     const goToAllTripsPage = () => {
@@ -36,6 +37,7 @@ const FormPage= () => {
         .then(() => {
             alert("Cadastro efetuado com sucesso")
             console.log("yeeey")
+            
         }).catch(error => {
             alert("Erro ao cadastrar. Tente novamente.")
             console.log(error, "ruuuuuim!")
@@ -47,13 +49,14 @@ const FormPage= () => {
     }
      return(
        <div>
+           <Title>Participe do processo de seleção</Title>
         <FormContainer>
             <Input
             placeholder="Nome"
             type="text"
             value={name}
             onChange={setName}
-            pattern="[A-Za-z]{3,}"
+            pattern=" [A-z0-9À-ž\s]{3,}"
             />
             <Input
             placeholder="Idade"
@@ -62,21 +65,21 @@ const FormPage= () => {
             value={age}
             onChange={setAge}
             />
-            <Input
+            <InputDescription
             placeholder="Vocês devem me escolher porque..."
             type="text"
             value={applicationText}
             onChange={setApplicationText}
-            pattern="[A-Za-z]{30,}"
+            pattern=" [A-z0-9À-ž\s]{30,}"
             />
             <Input
             placeholder="Profissão"
             type="text"
             value={profession}
             onChange={setProfession}
-            pattern="[A-Za-z]{10,}"
+            pattern=" [A-z0-9À-ž\s]{10,}"
             />
-            <select onChange={handleSelect}>
+            <Select onChange={handleSelect}>
             <option value="país">Pais</option>  
             <option value={"Brasil"}>Brasil</option>
             <option value={"Argentina"}>Argentina</option>
@@ -91,11 +94,13 @@ const FormPage= () => {
             <option value={"Suriname"}>Suriname</option>
             <option value={"Uruguai"}>Uruguai</option>
             <option value={"Venezuela"}>Venezuela</option>
-            </select>
+            </Select>
            
         </FormContainer>
-         <button onClick={applyToTrip}>ENVIAR</button>
-         <button onClick={goToAllTripsPage}>VOLTAR</button>
+        <ButtonContainer>
+         <SendButton onClick={applyToTrip}>ENVIAR</SendButton>
+         <BackButton onClick={goToAllTripsPage}>VOLTAR</BackButton>
+        </ButtonContainer> 
          </div>
     )
 }

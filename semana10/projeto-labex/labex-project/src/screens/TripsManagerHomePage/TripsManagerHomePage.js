@@ -1,7 +1,8 @@
-import React, {useState} from "react"
-import {useHistory, useParams} from "react-router-dom"
+import React from "react"
+import {useHistory} from "react-router-dom"
 import {useRequestData} from "../../hooks/useRequestData"
-import { baseUrl } from "../../constants/url"
+import {baseUrl} from "../../constants/url"
+import {Title, TripDetailsContainer, TripsList, CreateTripButton, BackButton} from "./styles"
 
 
 const TripsManagerHomePage = () => {
@@ -11,7 +12,6 @@ const TripsManagerHomePage = () => {
 
     const detailsCandidates = (id) => {
         history.push(`/managerarea/analytics/${id}`)
-       
     }
 
     const goToCreatePage = () => {
@@ -22,19 +22,19 @@ const TripsManagerHomePage = () => {
         history.push("/alltrips")
     }
     return (
-    <div>
-        <div>lista de viagens</div>
+    <TripDetailsContainer>
+        <Title>LISTA DE VIAGENS</Title>
         {getTrips && getTrips.trips.map((item) => {  
                 return (
-                    <p onClick={() => detailsCandidates(item.id)}>
+                    <TripsList onClick={() => detailsCandidates(item.id)}>
                       {item.name}
-                    </p>
+                    </TripsList>
                 )
             })}     
 
-        <button onClick={goToCreatePage}>CRIAR VIAGENS</button>
-        <button onClick={goToAllTrips} >SAIR</button>
-    </div>
+        <CreateTripButton onClick={goToCreatePage}>CRIAR VIAGENS</CreateTripButton>
+        <BackButton onClick={goToAllTrips}>SAIR</BackButton>
+    </TripDetailsContainer>
   )
 }
 
