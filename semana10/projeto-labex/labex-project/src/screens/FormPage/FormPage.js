@@ -1,22 +1,27 @@
+import axios from "axios"
 import React, {useState} from "react"
-import {useInput} from "../../hooks/useInput"
+//import {useInput} from "../../hooks/useInput"
 import {FormContainer, Input, Select, Title, SendButton, BackButton, ButtonContainer, InputDescription} from "./styles"
 import {useHistory, useParams} from "react-router-dom"
 import {baseUrl} from "../../constants/url"
-import axios from "axios"
+import {useForm} from "../../hooks/useForm"
 
 
 const FormPage= (props) => {
-  const [name, setName] = useInput({})
-  const [age, setAge] = useInput({})
-  const [applicationText, setApplicationText] = useInput({})
-  const [profession, setProfession] = useInput({})
+ const {form, onChange} = useForm({name: "", age: "", applicationText: "", profession: ""})
+//   const [name, setName] = useInput({})
+//   const [age, setAge] = useInput({})
+//   const [applicationText, setApplicationText] = useInput({})
+//   const [profession, setProfession] = useInput({})
   const [country, setCountry] = useState(null)
   const history = useHistory()
   const pathParams = useParams()
   const id = pathParams.id
  
-  
+  const handleInput = (event) => {
+    const {value, name} = event.target
+    onChange(value, name)
+  }
   
 //rota para voltar lista viagens   
     const goToAllTripsPage = () => {
@@ -24,13 +29,15 @@ const FormPage= (props) => {
     }
 
 //requisição aplicação viagem
-    const applyToTrip = () => {
-        console.log("teste", applyToTrip)
+    const applyToTrip = (event) => {
+
+        event.preventDefault();
+        
         const body = {
-            name:name,
-            age:age,
-            applicationText:applicationText,
-            profession:profession,
+            name:form.name,
+            age:form.age,
+            applicationText:form.applicationText,
+            profession:form.profession,
             country: country
         }
         axios.post(`${baseUrl}trips/${id}/apply`, body)
@@ -51,33 +58,42 @@ const FormPage= (props) => {
        <div>
            <Title>Participe do processo de seleção</Title>
         <FormContainer>
+            <form onSubmit={applyToTrip}>
             <Input
             placeholder="Nome"
             type="text"
-            value={name}
-            onChange={setName}
+            value={form.name}
+            name="name"
+            onChange={handleInput}
             pattern=" [A-z0-9À-ž\s]{3,}"
+            required
             />
             <Input
             placeholder="Idade"
             type="number"
             min="19"
-            value={age}
-            onChange={setAge}
+            name="age"
+            value={form.age}
+            onChange={handleInput}
+            required
             />
             <InputDescription
             placeholder="Vocês devem me escolher porque..."
             type="text"
-            value={applicationText}
-            onChange={setApplicationText}
+            name="applicationText"
+            value={form.applicationText}
+            onChange={handleInput}
             pattern=" [A-z0-9À-ž\s]{30,}"
+            required
             />
             <Input
             placeholder="Profissão"
             type="text"
-            value={profession}
-            onChange={setProfession}
+            name="profession"
+            value={form.profession}
+            onChange={handleInput}
             pattern=" [A-z0-9À-ž\s]{10,}"
+            required
             />
             <Select onChange={handleSelect}>
             <option value="país">Pais</option>  
@@ -95,10 +111,10 @@ const FormPage= (props) => {
             <option value={"Uruguai"}>Uruguai</option>
             <option value={"Venezuela"}>Venezuela</option>
             </Select>
-           
+            </form>
         </FormContainer>
         <ButtonContainer>
-         <SendButton onClick={applyToTrip}>ENVIAR</SendButton>
+         <SendButton>ENVIAR</SendButton>
          <BackButton onClick={goToAllTripsPage}>VOLTAR</BackButton>
         </ButtonContainer> 
          </div>

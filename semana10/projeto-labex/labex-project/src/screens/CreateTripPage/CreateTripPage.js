@@ -4,34 +4,41 @@ import {baseUrl} from "../../constants/url"
 import axios from "axios"
 import {Title, ContainerCreateTrip, Input, InputDescription, PlanetSelect, CreateTripButton, BackButton} from "./styles"
 import { ButtonContainer } from "../../components/TripCard/styles"
+import {useForm} from "../../hooks/useForm"
 
 const CreateTripPage = () => {
  const history = useHistory()
- const [name, setName] = useState("")
- const [date, setDate] = useState("")
- const [description, setDescription] = useState("")
- const [durationInDays, setDurationInDays] = useState("")
+ const {form, onChange} = useForm({email: "", password: ""})
+//  const [name, setName] = useState("")
+//  const [date, setDate] = useState("")
+//  const [description, setDescription] = useState("")
+//  const [durationInDays, setDurationInDays] = useState("")
  const [planet, setPlanet] = useState(null)
 
     const goToTripsManagerPage = () => {
         history.push("/managerarea")
     }
 
-    const handleName = (e) => {
-        setName(e.target.value)
-    }
+    const handleInput = (event) => {
+        const {value, name} = event.target
+        onChange(value, name)
+      }
 
-    const handleDate = (e) => {
-        setDate(e.target.value)
-    }
+    // const handleName = (e) => {
+    //     setName(e.target.value)
+    // }
 
-    const handleDescription = (e) => {
-        setDescription(e.target.value)
-    }
+    // const handleDate = (e) => {
+    //     setDate(e.target.value)
+    // }
 
-    const handleDuration = (e) => {
-        setDurationInDays(e.target.value)
-    }
+    // const handleDescription = (e) => {
+    //     setDescription(e.target.value)
+    // }
+
+    // const handleDuration = (e) => {
+    //     setDurationInDays(e.target.value)
+    // }
 
     const handleSelect = (event) => {
         setPlanet(event.target.value)
@@ -46,14 +53,16 @@ const CreateTripPage = () => {
     }, [history])
 
 //requisição para entrar criar viagem - área privada
-      const createTrip = () => {
+      const createTrip = (event) => {
           
+        event.preventDefault()
+
           const body = {
-              name: name,
+              name: form.name,
               planet: planet,
-              date: date,
-              description: description,
-              durationInDays: durationInDays
+              date: form.date,
+              description: form.description,
+              durationInDays: form.durationInDays
           }
 
           axios.post(`${baseUrl}trips`, body,  {
@@ -75,33 +84,42 @@ const CreateTripPage = () => {
         return (
     <ContainerCreateTrip>
         <Title>CRIAR VIAGENS</Title>
+        <form onSubmit={createTrip}>
         <Input
-        value={name}
+        value={form.name}
         placeholder="Nome da viagem"
         type="text"
-        onChange={handleName}
+        name="name"
+        onChange={handleInput}
         pattern=" [A-z0-9À-ž\s]{5,}"
+        required
         />
         <Input
-        value={date}
+        value={form.date}
         min="2021-01-01"
         placeholder="Data"
         type="date"
-        onChange={handleDate}
+        name="date"
+        onChange={handleInput}
+        required
         />
         <InputDescription
-        value={description}
+        value={form.description}
         placeholder="Descrição"
         type="text"
-        onChange={handleDescription}
+        name="description"
+        onChange={handleInput}
         pattern= "[A-z0-9À-ž\s]{30,}"
+        required
         />
         <Input
-        value={durationInDays}
+        value={form.durationInDays}
         min="50"
         placeholder="Duração em dias"
         type="text"
-        onChange={handleDuration}
+        name="durationInDays"
+        onChange={handleInput}
+        required
         />
          <PlanetSelect onChange={handleSelect}>
             <option value="país">Planeta</option>  
@@ -116,9 +134,10 @@ const CreateTripPage = () => {
             <option value={"Plutão"}>Plutão</option>
         </PlanetSelect>
         <ButtonContainer>
-        <CreateTripButton onClick={createTrip}>CRIAR VIAGENS</CreateTripButton>
+        <CreateTripButton>CRIAR VIAGENS</CreateTripButton>
         <BackButton onClick={goToTripsManagerPage} >VOLTAR</BackButton>
         </ButtonContainer>
+        </form>
     </ContainerCreateTrip>
   )
 }

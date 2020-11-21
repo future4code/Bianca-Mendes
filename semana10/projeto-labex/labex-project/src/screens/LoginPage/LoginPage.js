@@ -1,24 +1,31 @@
+import axios from "axios"
 import React, { useState, useEffect } from "react"
 import {useHistory} from "react-router-dom"
 import {baseUrl} from "../../constants/url"
-import axios from "axios"
 import {Login, Input, ButtonSignIn, ButtonBack} from "./styles"
+import {useForm} from "../../hooks/useForm"
 
 export function LoginPage() {
  const history = useHistory()
- const [email, setEmail] = useState("")
- const [password, setPassword] = useState("")
+ const {form, onChange} = useForm({email: "", password: ""})
+ //const [email, setEmail] = useState("")
+ //const [password, setPassword] = useState("")
 
     const goToHomePage = () => {
         history.push("/")
     }
 
-    const handleEmail = (e) => {
-        setEmail(e.target.value)
-    }
+    // const handleEmail = (e) => {
+    //     setEmail(e.target.value)
+    // }
 
-    const handlePassword = (e) => {
-        setPassword(e.target.value)
+    // const handlePassword = (e) => {
+    //     setPassword(e.target.value)
+    // }
+
+    const handleInput = (event) => {
+      const {value, name} = event.target
+      onChange(value, name)
     }
 
     useEffect(() => {
@@ -31,10 +38,13 @@ export function LoginPage() {
     }, [history])
 
 //requisição para entrar área privada
-    const goToTripsManagerPage = () => {
+    const goToTripsManagerPage = (event) => {
+       
+      event.preventDefault();
+
           const body = {
-              email: email,
-              password: password
+              email: form.email,
+              password: form.password
           }
 
           axios.post(`${baseUrl}login`, body)
@@ -50,20 +60,26 @@ export function LoginPage() {
         return (
             <div>
               <Login>LOGIN</Login>
+              <form onSubmit={goToTripsManagerPage}>
               <Input
-                value={email}
+                value={form.email}
                 type="email"
+                name="email"
                 placeholder="E-mail"
-                onChange={handleEmail}
+                onChange={handleInput}
+                required
               />
               <Input
-                value={password}
+                value={form.password}
                 type="password"
+                name="password"
                 placeholder="Senha"
-                onChange={handlePassword}
+                onChange={handleInput}
+                required
               />
-              <ButtonSignIn onClick={goToTripsManagerPage}>ENTRAR</ButtonSignIn>
-              <ButtonBack onClick={goToHomePage}>VOLTAR</ButtonBack>  
+              <ButtonSignIn>ENTRAR</ButtonSignIn>
+              <ButtonBack onClick={goToHomePage}>VOLTAR</ButtonBack> 
+              </form> 
             </div>
   )
 }
