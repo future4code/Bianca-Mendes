@@ -1,4 +1,4 @@
-import { useState } from "react"
+import {useState} from "react"
 import {CardContainer, CardImage, CardText, DetailsButton, Title, ModalDetails, CloseButton, SignUpButton, ButtonContainer } from "./styles"
 import Modal from "react-modal"
 import {useHistory} from "react-router-dom"
@@ -9,8 +9,6 @@ const ShowCard = (props) => {
  const [modalIsOpen, setModalIsOpen] = useState(false)
  const [id, setId] = useState("")
 
-   
-    
     const closeModal = () => {
         setModalIsOpen(false)
     }
@@ -19,7 +17,6 @@ const ShowCard = (props) => {
         history.push(`/alltrips/details/applicationform/${id}`)
     }
    
-
         return (
             <div>
             {modalIsOpen ? <Modal
@@ -57,7 +54,7 @@ const ShowCard = (props) => {
                                 <ModalDetails>Data: {props.date}</ModalDetails>
                                 <ButtonContainer>
                                 <CloseButton onClick={() => setModalIsOpen(false)}>FECHAR</CloseButton>  
-                                <SignUpButton nameTrip={props.name} onClick={ () => goToFormPage(props.id)}>INSCREVA-SE</SignUpButton>  
+                                <SignUpButton onClick={ () => goToFormPage(props.id)}>INSCREVA-SE</SignUpButton>  
                                 </ButtonContainer>
                                 </Modal> : <>
                                 
@@ -65,15 +62,15 @@ const ShowCard = (props) => {
             
           
 
-            <CardContainer>
-                <CardImage>{props.image}</CardImage> 
-                <CardText>{props.name}</CardText>
-                <DetailsButton onClick={() => {setModalIsOpen(true, setId)}}>DETALHES</DetailsButton>
-            </CardContainer>
+                 <CardContainer>
+                     <CardImage>{props.image}</CardImage>
+                     <CardText>{props.name}</CardText>
+                     <DetailsButton onClick={() => {setModalIsOpen(true, setId)}}>DETALHES</DetailsButton>
+                 </CardContainer>
             </div>
-  )
+        )
 }
 
-export default ShowCard;
+export default ShowCard
 
 

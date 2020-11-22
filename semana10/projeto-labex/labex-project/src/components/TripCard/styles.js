@@ -37,7 +37,7 @@ export const DetailsButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+   }
 `   
 
 export const Title = styled.h3`
@@ -63,7 +63,7 @@ export const CloseButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+  }
 `  
 
 export const SignUpButton = styled.button` 
@@ -80,7 +80,7 @@ export const SignUpButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+  }
 `
 
 export const ButtonContainer = styled.div`

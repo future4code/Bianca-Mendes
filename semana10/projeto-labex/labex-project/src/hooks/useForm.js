@@ -11,6 +11,5 @@ export const useForm = (initialValues) => {
       setForm(initialValues)
   }
  
-
   return {form, onChange, resetState}
 }

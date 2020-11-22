@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, {useEffect, useState} from "react"
 import axios from "axios"
 
 export function useRequestData(url,initialState) {
@@ -10,7 +10,7 @@ export function useRequestData(url,initialState) {
             setData(response.data)
         })
         .catch((err) => {
-            console.log(err, "deu ruuuuim")
+            console.log(err)
         })
     }, [url])
 

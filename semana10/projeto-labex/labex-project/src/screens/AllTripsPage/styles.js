@@ -19,7 +19,7 @@ export const BackButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+  }
 `      
 
   

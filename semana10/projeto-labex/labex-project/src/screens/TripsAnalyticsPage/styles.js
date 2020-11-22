@@ -34,10 +34,9 @@ export const ContainerDetails = styled.div`
  margin:20px;
 `    
 export const DetailsContainer = styled.div`
- 
-display: grid;
-grid-template-columns: 1fr 1fr;
-grid-template-rows:1fr;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ grid-template-rows:1fr;
 `   
 
 export const CandidateDetails = styled.div`
@@ -68,7 +67,7 @@ export const ApproveButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+  }
 `     
 
 export const RejectButton = styled.button`  
@@ -86,7 +85,7 @@ export const RejectButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-} 
+  } 
 `       
 
 export const BackButton = styled.button`
@@ -104,7 +103,7 @@ export const BackButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-} 
+  } 
 `    
 export const ApprovedContainer = styled.div` 
  height: auto;

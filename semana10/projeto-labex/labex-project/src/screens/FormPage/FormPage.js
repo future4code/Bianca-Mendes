@@ -1,6 +1,5 @@
 import axios from "axios"
 import React, {useState} from "react"
-//import {useInput} from "../../hooks/useInput"
 import {FormContainer, Input, Select, Title, SendButton, BackButton, ButtonContainer, InputDescription} from "./styles"
 import {useHistory, useParams} from "react-router-dom"
 import {baseUrl} from "../../constants/url"
@@ -8,19 +7,15 @@ import {useForm} from "../../hooks/useForm"
 
 
 const FormPage= (props) => {
- const {form, onChange} = useForm({name: "", age: "", applicationText: "", profession: ""})
-//   const [name, setName] = useInput({})
-//   const [age, setAge] = useInput({})
-//   const [applicationText, setApplicationText] = useInput({})
-//   const [profession, setProfession] = useInput({})
-  const [country, setCountry] = useState(null)
-  const history = useHistory()
-  const pathParams = useParams()
-  const id = pathParams.id
+ const {form, onChange, resetState} = useForm({name: "", age: "", applicationText: "", profession: ""})
+ const [country, setCountry] = useState(null)
+ const history = useHistory()
+ const pathParams = useParams()
+ const id = pathParams.id
  
-  const handleInput = (event) => {
-    const {value, name} = event.target
-    onChange(value, name)
+    const handleInput = (event) => {
+       const {value, name} = event.target
+       onChange(value, name)
   }
   
 //rota para voltar lista viagens   
@@ -42,13 +37,11 @@ const FormPage= (props) => {
         }
         axios.post(`${baseUrl}trips/${id}/apply`, body)
         .then(() => {
+            resetState()
             alert("Cadastro efetuado com sucesso")
-            console.log("yeeey")
-            
         }).catch(error => {
             alert("Erro ao cadastrar. Tente novamente.")
-            console.log(error, "ruuuuuim!")
-        } )
+        })
     }
     
         const handleSelect = (event) => {
@@ -111,13 +104,15 @@ const FormPage= (props) => {
             <option value={"Uruguai"}>Uruguai</option>
             <option value={"Venezuela"}>Venezuela</option>
             </Select>
-            </form>
-        </FormContainer>
-        <ButtonContainer>
+            <ButtonContainer>
          <SendButton>ENVIAR</SendButton>
          <BackButton onClick={goToAllTripsPage}>VOLTAR</BackButton>
-        </ButtonContainer> 
-         </div>
+         </ButtonContainer>
+         </form>
+        </FormContainer>
+         
+     
+        </div>
     )
 }
 

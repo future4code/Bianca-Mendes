@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useState, useEffect } from "react"
+import React, {useState, useEffect} from "react"
 import {useHistory, useParams} from "react-router-dom"
 import {baseUrl} from "../../constants/url"
 import {Title, TripName, TripDetails, ContainerDetails, DetailsContainer, CandidateDetails, CandidateDetail,  ApproveButton, RejectButton, BackButton, ApprovedContainer, TitleApproved, NameCandidate} from "./styles"
@@ -35,10 +35,7 @@ const TripsAnalyticsPage = (props) => {
   }
 
   const decideCandidate = (approved,candidateId) => {
-    
-      //setApproved(!approved)
-
-      const body = {
+    const body = {
         approve: approved
       }
     axios
@@ -50,11 +47,9 @@ const TripsAnalyticsPage = (props) => {
       }
       )
       .then(() => {
-        //setApproved(response.data)
         getTripDetail()
-        console.log("yeeey")
-    }).catch(error => {
-        console.log(error, "ruuuuuim!")
+      }).catch(error => {
+        console.log(error)
     } )
    }
 
@@ -96,13 +91,7 @@ const TripsAnalyticsPage = (props) => {
           )
         })}
         
-        
-           
-                          
-            
-        
-       
-        <BackButton onClick={goToTripsManagerPage}>VOLTAR</BackButton>
+      <BackButton onClick={goToTripsManagerPage}>VOLTAR</BackButton>
     </DetailsContainer>
   )
 }

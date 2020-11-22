@@ -27,7 +27,7 @@ export const TripsList = styled.p`
    background-color: #2a9d8f;
    color: white;
    border-radius: 10px;
- }
+  }
 `
 
 export const CreateTripButton = styled.button`
@@ -44,7 +44,7 @@ export const CreateTripButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+  }
 `
 
 export const BackButton = styled.button` 
@@ -60,7 +60,5 @@ export const BackButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
-
-
+  }
 `      

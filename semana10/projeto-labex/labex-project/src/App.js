@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const Container = styled.div`
 width: 100%;
-height: 40em;
+height: 48em;
 background-color: #264653;
 `    
 

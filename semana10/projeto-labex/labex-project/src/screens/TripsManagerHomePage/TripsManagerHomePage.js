@@ -24,7 +24,7 @@ const TripsManagerHomePage = () => {
     return (
     <TripDetailsContainer>
         <Title>LISTA DE VIAGENS</Title>
-        {getTrips && getTrips.trips.map((item) => {  
+            {getTrips && getTrips.trips.map((item) => {  
                 return (
                     <TripsList onClick={() => detailsCandidates(item.id)}>
                       {item.name}

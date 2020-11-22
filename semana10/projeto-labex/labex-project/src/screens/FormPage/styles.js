@@ -1,32 +1,34 @@
-import styled, { withTheme } from "styled-components"
+import styled from "styled-components"
 
 export const FormContainer = styled.div`
-display: flex;
-flex-direction:column;
-align-items: center;
+ display: flex;
+ flex-direction:column;
+ align-items: center;
+
 `    
 
 export const Input = styled.input`
-width: 250px;
-margin:5px;
-height: 20px;
-justify-content: center;
-border-radius: 5px;
+ width: 250px;
+ margin:5px;
+ height: 20px;
+ justify-content: center;
+ border-radius: 5px;
+ display: block;
 `    
 
 export const Select = styled.select` 
-width: 250px;
-margin:5px;
-height: 20px;
-border-radius: 5px;
+ width: 250px;
+ margin:5px;
+ height: 20px;
+ border-radius: 5px;
 ` 
 
 export const Title = styled.h2`   
-color: white;
-font-weight: 400;
-padding-top: 150px;
-padding-bottom: 20px;
-text-align: center;
+ color: white;
+ font-weight: 400;
+ padding-top: 150px;
+ padding-bottom: 20px;
+ text-align: center;
 `     
 
 export const SendButton = styled.button`
@@ -43,7 +45,7 @@ export const SendButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+  }
 `   
 
 export const BackButton = styled.button`
@@ -60,7 +62,7 @@ export const BackButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+  }
 `      
 
 export const ButtonContainer = styled.div`
@@ -74,4 +76,6 @@ export const InputDescription = styled.input`
  width: 250px;
  height:100px;
  border-radius: 5px;
+ display: block;
+ margin:5px;
  `      

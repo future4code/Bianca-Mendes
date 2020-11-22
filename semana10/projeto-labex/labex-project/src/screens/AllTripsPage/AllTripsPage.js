@@ -34,30 +34,23 @@ const AllTripsPage = () => {
     return (
       <div>
         <ScreenContainer>
-            {getTrips && getTrips.trips.map((item, i) => {   //curto-circuito pra ele usar apenas a parte vdd da constante getTrips
+          {getTrips && getTrips.trips.map((item) => {   //curto-circuito pra ele usar apenas a parte vdd da constante getTrips
                 return (
                 <div>
                     <TripCard
                     key={item.id}
                     id={item.id}
-                   // image={<img src={`https://picsum.photos/200/200/?a=${i}`} alt={"foto aleatoria"} />}
                     name={item.name}
                     description={item.description}
                     duration={item.durationInDays}
                     planet={item.planet}
                     date={item.date}
+                    image={<img src={image.url} alt="nasa" width="200" height="200"/>}
                     />
                 </div>
                 )
             })} 
 
-
-           <div>
-                    <TripCard 
-                    image={<img src={image.url} alt={"nasa"}/> } 
-                    />
-            </div>    
-                
         </ScreenContainer>
         <BackButton onClick={goToHomePage}>VOLTAR</BackButton>
       </div>

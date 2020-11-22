@@ -13,8 +13,6 @@ export const Title = styled.h2`
 export const ContainerCreateTrip = styled.div`  
  display: flex;
  flex-direction: column;
- justify-content: center;
- justify-self: center;
  align-items: center;
  `      
 
@@ -35,10 +33,10 @@ export const InputDescription = styled.input`
  `   
 
 export const PlanetSelect = styled.select`
-width: 250px;
-height:20px;
-border-radius: 5px;
-`      
+ width: 250px;
+ height:20px;
+ border-radius: 5px;
+`       
 
 export const CreateTripButton = styled.button ` 
  outline: none;
@@ -55,7 +53,7 @@ export const CreateTripButton = styled.button `
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+  }
 `
 
 export const BackButton = styled.button`
@@ -73,5 +71,5 @@ export const BackButton = styled.button`
  &:hover {
    background-color: #2a9d8f;
    color: white;
-}
+  }
 `   
