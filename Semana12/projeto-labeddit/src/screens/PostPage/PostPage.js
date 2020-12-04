@@ -33,7 +33,6 @@ const PostPage = () => {
         })
         .then((res) => {
             setDetail(res.data.post)
-            console.log("posts")
         }).catch((err) => {
             console.log(err)
         })
@@ -60,13 +59,15 @@ const PostPage = () => {
 
       return(
         <div>
-            <PostItem
+            <PostItem 
             id={detail.id}
             username={detail.username}
             title={detail.title}
             text={detail.text}     
             votes={detail.votesCount}
             comments={detail.commentsCount}
+            voteDirection={detail.userVoteDirection}
+            update={getDetails}
             />
 
             <CreateCommentContainer>
@@ -87,7 +88,7 @@ const PostPage = () => {
 
            {detail.comments && detail.comments.map((item) => {
                 return(
-                    <div>
+                    <div key={item.id}>
                     <CommentItem
                     idComment={item.id}
                     username={item.username}

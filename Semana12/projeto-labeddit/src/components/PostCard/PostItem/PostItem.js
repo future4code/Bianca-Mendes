@@ -14,7 +14,6 @@ const PostItem = (props) => {
     const vote = (rate) => {
         const body = {
             direction: rate
-
         }
         axios.put(`${urlBase}/posts/${props.id}/vote`, body, {
             headers: {
@@ -57,7 +56,6 @@ const PostItem = (props) => {
         )
     }} 
 
-    
     return(
         <PostDetailContainer>
             <PostHeader>{props.username}</PostHeader> 
