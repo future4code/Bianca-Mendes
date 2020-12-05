@@ -1,14 +1,32 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { useForm } from "../../hooks/useForm"
 import { urlBase } from "./../../constants/urlBase"
 import { useHistory } from "react-router-dom"
 import { goToRegistration } from "./../../routes/coordinator"
-import { TextField, Button } from "@material-ui/core"
+import {TextField, Button }  from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import Visibility from "@material-ui/icons/Visibility"
+import VisibilityOff from "@material-ui/icons/VisibilityOff"
 import { LoginContainer, FormContainer, Title } from "./styled"
+import InputLabel from '@material-ui/core/InputLabel';
+import clsx from 'clsx';
+import FormControl from '@material-ui/core/FormControl';
+//import { makeStyles } from '@material-ui/core/styles';
 
-const LoginPage = () => {
+// const useStyles = makeStyles((theme) => ({
+//     margin: {
+//       margin: theme.spacing(1),
+//     },
     
+    
+//   }))
+ 
+export default function LoginPage () {   
+    //const classes = useStyles()
+    const [showPassword, setShowPassword] = useState(false)
     const history = useHistory()
     const {form, onChange} = useForm({email: "", password:""})
 
@@ -26,6 +44,14 @@ const LoginPage = () => {
         onChange(value, name)
     }
     
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword)
+    }
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault()
+    }
+
     const login = (event) => {
         event.preventDefault()
 
@@ -49,6 +75,7 @@ const LoginPage = () => {
             <LoginContainer>
         
                  <FormContainer onSubmit={login}>
+                 
                     <TextField
                     variant="outlined"
                     size="small"
@@ -60,16 +87,32 @@ const LoginPage = () => {
                     onChange={handleInput}
                     required
                     />
-                    <TextField
-                    variant="outlined"
-                    size="small"
-                    label="Senha"
+                    <FormControl variant="outlined" required="true" >
+                     <InputLabel htmlFor="outlined-adornment-password" margin="dense" >Senha</InputLabel>
+                    <OutlinedInput
+                    id="outlined-adornment-password"
+                    margin="dense"
+                    label="Senha "
                     value={form.password}
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     placeholder="Senha"
                     onChange={handleInput}
-                    required/>
+                    endAdornment={
+                        <InputAdornment position="end">
+                            <IconButton
+                                aria-label="teste"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end" 
+                            >
+                            {showPassword ? <Visibility/> : <VisibilityOff />}
+                           </IconButton>
+                        </InputAdornment>
+                      }
+                      
+                   />
+                  </FormControl>
                     <Button variant="outlined" color="primary" type="submit">ENTRAR</Button>
                  </FormContainer>
                  <Button variant="outlined" color="primary" onClick={() => {goToRegistration(history)}}>CADASTRE-SE</Button>
@@ -78,4 +121,3 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage

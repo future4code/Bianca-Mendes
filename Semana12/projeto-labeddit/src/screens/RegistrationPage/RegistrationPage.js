@@ -1,18 +1,27 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { useForm } from "../../hooks/useForm"
 import { urlBase } from "../../constants/urlBase"
-import {TextField, Button} from "@material-ui/core"
+import {TextField, Button, InputAdornment, IconButton, OutlinedInput} from "@material-ui/core"
+import Visibility from "@material-ui/icons/Visibility"
+import VisibilityOff from "@material-ui/icons/VisibilityOff"
 import {FormContainer, RegistrationContainer, Title} from "./styled"
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const RegistrationPage = () => {
+    const [showPassword, setShowPassword] = useState(false)
     const history = useHistory()
     const {form, onChange} = useForm({email: "", password:"", username: ""})
 
     const handleInput = (event) => {
         const {value, name} = event.target
         onChange(value, name)
+    }
+
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword)
     }
     
     useEffect(() => {
@@ -60,16 +69,33 @@ const RegistrationPage = () => {
                 onChange={handleInput}
                 required
                 />
-                <TextField
+                <FormControl variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password" margin="dense">Senha *</InputLabel>
+                <OutlinedInput
+                id="outlined-adornment-password"
+                margin="dense"
                 value={form.password}
                 variant="outlined"
-                size="small"
                 label="Senha"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Senha"
                 onChange={handleInput}
-                required/>
+                required
+                endAdornment={
+                    <InputAdornment position="end">
+                        <IconButton
+                            onClick={handleClickShowPassword}
+                            edge="end" 
+                        >
+                        {showPassword ? 
+                       (<Visibility  />) : 
+                       (<VisibilityOff />)}
+                       </IconButton>
+                    </InputAdornment>
+                  }
+                  />
+                </FormControl>
                 <TextField
                 value={form.username}
                 variant="outlined"

@@ -59,7 +59,7 @@ const PostPage = () => {
 
       return(
         <div>
-            <PostItem 
+            <PostItem
             id={detail.id}
             username={detail.username}
             title={detail.title}
