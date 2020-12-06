@@ -1,9 +1,5 @@
 import styled from "styled-components"
 
-
-
-
-
 export const CreateCommentContainer = styled.div`  
   display: flex;
   flex-direction: column;

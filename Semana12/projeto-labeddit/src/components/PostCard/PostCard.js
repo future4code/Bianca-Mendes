@@ -70,7 +70,6 @@ const PostCard = (props) => {
                 {liked()}
                 <CommentImage src={comments} alt={"balão-comentario"} onClick={() => { goToDetails(history, props.id) }} />
                 <div>{props.comments}</div>
-
             </PostFooter>
         </PostContainer>
 

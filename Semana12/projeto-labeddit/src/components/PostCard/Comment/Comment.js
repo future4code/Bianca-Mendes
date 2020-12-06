@@ -54,9 +54,7 @@ const CommentItem = (props) => {
                     <ArrowImage src={arrowdownred} alt={"seta-baixo"} onClick={() => { vote(0) }} />
                 </>
             )
-        }} 
-
-
+           }} 
 
 
     return(

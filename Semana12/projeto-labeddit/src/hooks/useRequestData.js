@@ -5,11 +5,14 @@ import axios from "axios"
 export function useRequestData(url,initialState) {
  const [data, setData] = useState(initialState)
 
+    const axiosAuth = {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }
+
     const getFunction = () => {
-        axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }})
+        axios.get(url,axiosAuth)
         .then((response) => {
             setData(response.data)
         })

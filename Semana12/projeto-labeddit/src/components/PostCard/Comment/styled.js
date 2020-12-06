@@ -35,7 +35,7 @@ export const CommentImage = styled.img`
 ` 
 
 export const ArrowImage = styled.img`
-cursor: pointer;
-width: 25px;
-height:25px;
+  cursor: pointer;
+  width: 25px;
+  height:25px;
 `

@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react"
-import axios from "axios"
+import React, { useState } from "react"
 import { useForm } from "../../hooks/useForm"
-import { urlBase } from "./../../constants/urlBase"
 import { useHistory } from "react-router-dom"
 import { goToRegistration } from "./../../routes/coordinator"
 import {TextField, Button }  from '@material-ui/core';
@@ -12,32 +10,13 @@ import Visibility from "@material-ui/icons/Visibility"
 import VisibilityOff from "@material-ui/icons/VisibilityOff"
 import { LoginContainer, FormContainer, Title } from "./styled"
 import InputLabel from '@material-ui/core/InputLabel';
-import clsx from 'clsx';
 import FormControl from '@material-ui/core/FormControl';
-//import { makeStyles } from '@material-ui/core/styles';
+import { login } from "../../services/user"
 
-// const useStyles = makeStyles((theme) => ({
-//     margin: {
-//       margin: theme.spacing(1),
-//     },
-    
-    
-//   }))
- 
 export default function LoginPage () {   
-    //const classes = useStyles()
     const [showPassword, setShowPassword] = useState(false)
     const history = useHistory()
     const {form, onChange} = useForm({email: "", password:""})
-
-    useEffect(() => {
-        const token = localStorage.getItem("token")
-    
-        if (token) {
-          history.push("/feed")
-        } 
-        
-    }, [history]) 
 
     const handleInput = (event) => {
         const {value, name} = event.target
@@ -52,21 +31,9 @@ export default function LoginPage () {
         event.preventDefault()
     }
 
-    const login = (event) => {
+    const handleSubmission = (event) => {
         event.preventDefault()
-
-        const body ={
-            email: form.email,
-            password: form.password
-        }
-
-        axios.post(`${urlBase}/login`, body)
-        .then((res) => {
-            console.log("entrar")
-            localStorage.setItem("token", res.data.token)
-            history.push("/feed")
-            console.log("entrou")
-        }).catch((err) => {console.log(err)})
+        login(form, history)
     }
 
     return(
@@ -74,7 +41,7 @@ export default function LoginPage () {
             <Title>Login</Title>
             <LoginContainer>
         
-                 <FormContainer onSubmit={login}>
+                 <FormContainer onSubmit={handleSubmission}>
                  
                     <TextField
                     variant="outlined"

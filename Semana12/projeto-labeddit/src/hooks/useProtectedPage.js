@@ -9,6 +9,7 @@ export function useProtectedPage() {
 
       if(!token) {
           history.push("/")
+          alert("Você não esta logado!")
       }
   }, [history])
 }

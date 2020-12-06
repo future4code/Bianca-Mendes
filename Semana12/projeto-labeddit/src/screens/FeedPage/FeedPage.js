@@ -1,5 +1,4 @@
 import React from "react"
-import axios from "axios"
 import { useForm } from "../../hooks/useForm"
 import { useProtectedPage } from "../../hooks/useProtectedPage"
 import { urlBase } from "./../../constants/urlBase"
@@ -7,53 +6,32 @@ import PostCard from "../../components/PostCard/PostCard"
 import { useRequestData } from "../../hooks/useRequestData"
 import { TextField, Button } from "@material-ui/core"
 import { FormContainer, CreatePostContainer } from "./styled"
+import { createPost } from "../../services/post"
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const FeedPage = () => {
-    
     useProtectedPage()
     const {form, onChange, resetState} = useForm({title: "", text: ""})
-    //const [form, setForm] = useState({title: "", text: ""})
-
+    
     const handleInput = (event) => {
         const {value, name} = event.target
         onChange(value, name)
     }
 
-    // const handleInput = (event) => {
-    //     const {name, value} = event.target
-    //     setForm({...form, [name]: value})
-    // }
-    const createPost = (event) => {
+    const handleSubmission = (event) => {
         event.preventDefault()
-
-        const body = {
-            title: form.title,
-            text: form.text    
-        }
-
-        axios.post(`${urlBase}/posts`, body,  {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }})
-        .then((res) => {
-            resetState()
-            getFunction()
-            alert("Deu certo")
-            console.log("postou")
-            
-        }).catch((err) => {
-            console.log(err, "erro")
-            alert("Erro, tente novamente.")})
+        resetState()
+        getFunction()
+        createPost(form)
     }
-    
-    
+  
     const [getPosts, getFunction] = useRequestData(`${urlBase}/posts`, undefined)
 
     return (
         <div>
            
             <CreatePostContainer>
-            <FormContainer onSubmit={createPost}>
+            <FormContainer onSubmit={ handleSubmission}>
             <TextField
             value={form.title}
             name="title"
@@ -76,8 +54,10 @@ const FeedPage = () => {
             <Button type="submit" variant="contained" color="primary" >POSTAR</Button>
             </FormContainer>
             </CreatePostContainer>
-    
-        {getPosts && getPosts.posts.map((item) => {
+            <br/>
+
+        {!getPosts ?<CircularProgress/> : 
+          getPosts.posts.map((item) => {
             return (
                 <div key={item.id}>
                     <PostCard
