@@ -1,0 +1,19 @@
+{
+  "name": "exercicio1",
+  "version": "1.0.0",
+  "description": "node: exercicio 1",
+  "main": "index.js",
+  "scripts": {
+    "start": " node ./index.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "backend"
+  ],
+  "author": "Bianca Mendes",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  }
+}
