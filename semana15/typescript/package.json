@@ -1,0 +1,13 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "aula 41  - typescript",
+  "main": "index.js",
+  "scripts": {
+    "first-exercise": "tsc && node ./build/exercicio1.js",
+    "test": "echo \"Error: no test specified\" "
+  },
+  "keywords": [],
+  "author": "Bianca Mendes",
+  "license": "ISC"
+}
