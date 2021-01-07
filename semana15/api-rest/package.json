@@ -9,6 +9,9 @@
     "second-exercise":"tsc && node ./build/exercicio2.js",
     "third-exercise":"tsc && node ./build/exercicio3.js",
     "fourth-exercise":"tsc && node ./build/exercicio4.js",
+    "fifth-exercise":"tsc && node ./build/exercicio5.js",
+    "sixth-exercise":"tsc && node ./build/exercicio6.js",
+    "seventh-exercise":"tsc && node ./build/exercicio7.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

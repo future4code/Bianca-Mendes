@@ -1,4 +1,4 @@
-//-------------------- EXERCICIO 3 --------------------
+//-------------------- EXERCICIO 4 --------------------
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 import { user, users } from "./users"
@@ -41,3 +41,7 @@ const server = app.listen(3003, () => {
        console.error("Failure upon starting server.")
     }
   })
+
+//a) alterando de post para put tbm foi possível criar um usuário 
+//b) não, pois o put não faz verificação no momento da inclusão
+//mudei pra post novamente
