@@ -2,7 +2,7 @@
 export type user = {
     name: string,
     cpf: string,
-    dateOfBirth: number,
+    dateOfBirth?: Date,
     balance: number,
     bankStatement: transactions[]
 }
@@ -19,7 +19,7 @@ export let accounts: user[] = [
     {
       name: "Amora",
       cpf: "12345678911",
-      dateOfBirth: 655527600000 ,
+      // dateOfBirth: 1998-12-21,
       balance: 1000,
       bankStatement: [
           {
@@ -31,7 +31,7 @@ export let accounts: user[] = [
     {
         name: "Clara",
         cpf: "12345678958",
-        dateOfBirth: 536983200000,
+        // dateOfBirth: 28/11/1998,
         balance: 4000,
         bankStatement: [
             {
