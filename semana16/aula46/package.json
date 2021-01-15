@@ -1,0 +1,33 @@
+{
+  "name": "knex-express",
+  "version": "1.0.0",
+  "description": "usando knex e express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "clear && echo \"Starting application... \" && tsc && node ./build/index.js",
+    "dev": "ts-node-dev ./src/index.ts"
+  },
+  "keywords": [
+    "knex",
+    "express",
+    "dotenv"
+  ],
+  "author": "labenu",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.21.15",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.9",
+    "@types/express": "^4.17.11",
+    "@types/knex": "^0.16.1",
+    "@types/node": "^14.0.27",
+    "cors": "^2.8.5",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^3.9.7"
+  }
+}
