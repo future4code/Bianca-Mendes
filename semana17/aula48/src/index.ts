@@ -1,6 +1,6 @@
 import express, { Express } from "express"
 import { AddressInfo } from "net";
-import { getAllUsers, getUserByName, getUserByType, getUserByNameOrType } from "./endpoints/endpoints"
+import { getAllUsers, getUserByName, getUserByType, getUserByNameOrType, getAllUsersLimitPage, getUsersAllUsersandFuncionalities } from "./endpoints/endpoints"
 import cors from "cors"
 
 const app: Express = express()
@@ -11,6 +11,8 @@ app.get("/", getAllUsers)
 app.get("/search", getUserByName)
 app.get("/search/:type", getUserByType)
 app.get("/order", getUserByNameOrType)
+app.get("/page", getAllUsersLimitPage)
+app.get("/all/:type", getUsersAllUsersandFuncionalities)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {

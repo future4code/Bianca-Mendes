@@ -1,4 +1,6 @@
-export type user = {
+export type Users = {
     name: string,
-    typeUser: string
+    orderByColumn: string,
+    orderByAscOrDesc:string,
+    page: number
 }
