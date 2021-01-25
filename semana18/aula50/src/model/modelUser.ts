@@ -34,3 +34,19 @@ export const userByEmail = async (email: string): Promise<any> => {
     }
 }
 
+
+//pegar usuário pelo id
+export const userById = async (id: string): Promise<any> => {
+
+    try {
+        const result = await dataBase
+            .select("*")
+            .from("Users")
+            .where({ id })
+            
+            return result[0]
+
+    } catch (error) {
+        throw new Error(error.sqlMessage || error.message);
+    }
+}

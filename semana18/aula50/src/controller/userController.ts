@@ -1,6 +1,6 @@
 import { Response, Request } from "express"
-import { insertUser, userByEmail } from "../model/modelUser"
-import { generateToken } from "../utils/authenticator"
+import { insertUser, userByEmail, userById } from "../model/modelUser"
+import { AuthenticationData, generateToken, getTokenData } from "../utils/authenticator"
 import { generateId } from "../utils/idGenerator"
 
 //criar usuário
@@ -51,7 +51,10 @@ export const getUserByEmail = async (req: Request, res: Response): Promise<any> 
     let errorCode = 400
     try {
         
-       
+        const input: loginInput = {
+            email: req.body.email,
+            password: req.body.password
+        }
 
         //validação: nenhum campo vazio
         const keys = Object.keys(req.body)
@@ -61,11 +64,6 @@ export const getUserByEmail = async (req: Request, res: Response): Promise<any> 
                 return res.send("Por gentileza preencha todos os campos!")
         }
 
-        const input: loginInput = {
-            email: req.body.email,
-            password: req.body.password
-        }
-        
         //validação: email
         if(!(input.email).includes("@")) {
             errorCode = 406
@@ -89,7 +87,8 @@ export const getUserByEmail = async (req: Request, res: Response): Promise<any> 
         res.status(200).send({token})
 
     } catch (error) {
-        throw new Error(error.sqlMessage || error.message);
+        res.status(400).send({ message: error.message })
+        console.log(error.sqlMessage || error.message)
     }
 }
 
@@ -98,3 +97,27 @@ export type loginInput = {
     email: string,
     password: string
 }
+
+//puxar usuário pelo id
+export const getUserById = async (req: Request, res: Response): Promise<any> => {
+
+    try {
+
+       const token: string = req.headers.authorization!
+
+       const verifiedToken: AuthenticationData = getTokenData(token)
+
+       if(!verifiedToken) {
+        throw new Error("Não autorizado")  
+       }
+
+       const user = await userById(verifiedToken.id)
+
+       res.status(200).send({id: user.id, email: user.email})
+
+    } catch (error) {
+        res.status(400).send({ message: error.message })
+        console.log(error.sqlMessage || error.message)
+    }
+}
+
