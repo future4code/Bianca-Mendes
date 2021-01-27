@@ -1,8 +1,7 @@
 import { Response, Request } from "express"
-import { JsonWebTokenError } from "jsonwebtoken"
 import { insertUser, userByEmail, userById, deleteUser, insertAdress } from "../model/modelUser"
 import { getAdressByCep } from "../services/adressManager"
-import { address, roles, uAddress } from "../types/types"
+import { address, completeAddress, roles } from "../types/types"
 import { AuthenticationData, generateToken, getTokenData } from "../utils/authenticator"
 import { compare, generateHash } from "../utils/hashManager"
 import { generateId } from "../utils/idGenerator"
@@ -53,12 +52,19 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
 
         const datacep: address = await getAdressByCep(cep)
 
-                 
+        const newUser: completeAddress = {
+            id: idAddress,
+            street: datacep.street,
+            number,
+            complement, 
+            neighborhood: datacep.neighborhood,
+            city: datacep.city,
+            state: datacep.state,
+            user_id: id
+        }
         
-
-        await insertAdress(idAddress, datacep.street, number,complement, datacep.neighborhood, datacep.city, datacep.state, id  )
+        await insertAdress(newUser)
         
-
         const token =  generateToken({id, role: req.body.role})//coloca o role aqui, pq no authenticator pede ele tbm
 
         res.status(200).send({token})
@@ -193,57 +199,5 @@ export const getUserAdress = async (req: Request, res: Response): Promise<any> =
         res.status(200).send({message: address})
     }catch (error) {
 
-    }
-}
-
-//cadastrar endereço
-export const createAdressUser = async (req: Request, res: Response): Promise<any> => {
-
-    try {
-
-        //validação: nenhum campo vazio
-        const keys = Object.keys(req.body)
-
-        for (const key of keys) {
-            if (req.body[key] == "")
-                return res.send("Por gentileza preencha todos os campos!")
-        }
-
-        const { email, password, role } = req.body
-
-        //verificação role
-        if(req.body.role !== roles.ADMIN && req.body.role !== roles.NORMAL) {
-            throw new Error ("Role deve ser 'NORMAL' ou 'ADMIN'")
-        }
-        //geração id
-        const id: string = generateId()
-
-        //senha criptografada
-        const cypherPassword: string = generateHash(req.body.password)
-
-        //validação: email
-        if(!email.includes("@")) {
-            throw new Error("Por gentileza, insira um email válido")
-        }
-
-        //validação: senha 
-        if(password.length < 5) {
-            throw new Error("Insira uma senha com no mínimo 06 caracteres")
-        }
-
-        await insertUser(
-            id,
-            email,
-            cypherPassword,
-            role
-            )
-
-        const token =  generateToken({id, role: req.body.role})//coloca o role aqui, pq no authenticator pede ele tbm
-
-        res.status(200).send({token})
-
-    } catch (error) {
-        res.status(400).send({ message: error.message })
-        console.log(error.sqlMessage || error.message)
     }
 }

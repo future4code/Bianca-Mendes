@@ -10,7 +10,7 @@ export type address = {
     state: string
 }
 
-export type uAddress = {
+export type completeAddress = {
     id: string, 
     street: string,
     number: number,

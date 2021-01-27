@@ -1,5 +1,5 @@
 import dataBase from "../config/dataBase"
-import { roles } from "../types/types";
+import { completeAddress, roles } from "../types/types";
 
 //criar usuário
 export const insertUser = async (id: string, email: string, password: string, role: roles): Promise<any> => {
@@ -70,20 +70,11 @@ export const deleteUser = async (id: string): Promise<any> => {
 
 
 //cadastrar endereço
-export const insertAdress = async (id: string, street: string, number: number, complement: string, neighborhood: string, city: string, state: string, user_id: string): Promise<any> => {
+export const insertAdress = async (newUserAdress: completeAddress): Promise<any> => {
 
     try {
         await dataBase
-            .insert({
-                id,
-                street,
-                number, 
-                complement,
-                neighborhood,
-                city,
-                state,
-                user_id
-            })
+            .insert(newUserAdress)
             .into("AddressUsers");
 
     } catch (error) {
