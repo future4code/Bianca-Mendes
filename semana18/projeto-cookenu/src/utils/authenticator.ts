@@ -12,7 +12,6 @@ export function generateToken(input: AuthenticationData): string {
         return token 
 }
 
-
 //validação token
 export function getTokenData(token: string): AuthenticationData {
     const { id } = jwt.verify(token, process.env.JWT_KEY!) as AuthenticationData

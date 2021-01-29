@@ -1,6 +1,6 @@
 import { Response, Request } from "express"
 import { insertUser } from "../model/insertUser"
-import { user, user_roles } from "../types/user"
+import { user } from "../types/user"
 import { generateToken } from "../utils/authenticator"
 import { generateHash } from "../utils/hashManager"
 import { generateId } from "../utils/idGenerator"
@@ -14,7 +14,6 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
         const { name, email, password, role } = req.body
         
         //validações
-
         if (!name || !email || !password) {
             errorCode = 406;
             throw new Error('The necessary fields for registration are: name, email, password and role');
@@ -53,8 +52,8 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
             res.send("Role must be 'APPRENTICE' or 'CHEF'")
         }
 
-        res.status(400).send({ message: error.message });
-        console.log(error.sqlMessage || error.message);
+        res.status(400).send({ message: error.message })
+        console.log(error.sqlMessage || error.message)
     }
 }
 

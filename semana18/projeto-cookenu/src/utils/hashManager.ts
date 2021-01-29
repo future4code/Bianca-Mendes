@@ -12,7 +12,7 @@ export function generateHash(plainText: string): string {
 }
 
 //confere se a tentativa do usuario é a mesma salva no banco
-export function compare(
+export function compareHash(
     plaintext: string, 
     cypherText: string 
 ): boolean {
