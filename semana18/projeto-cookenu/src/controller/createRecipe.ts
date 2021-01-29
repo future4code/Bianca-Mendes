@@ -35,13 +35,26 @@ export const createRecipe = async (req: Request, res: Response): Promise<any> =>
 
         const id: string = generateId()
 
+         //const date = new Date(create_date).toLocaleDateString()
+
+      const date = new Date();
+      const day = date.getDate();           
+      const month = date.getMonth() + 1;    
+      const year = date.getFullYear();
+      const create_date: string = year + '/' + month + '/' + day
+        
         const newRecipe: recipe = {
             id,
             title,
             ingredients,
             instructions,
-            user_id
+            user_id,
+            create_date
         }
+         console.log(create_date)
+        // const [day, month, year] = create_date.split("/")
+
+        // const formatDate: Date = new Date(`${year}-${month}-${day}`)
 
         await insertRecipe(newRecipe)
 

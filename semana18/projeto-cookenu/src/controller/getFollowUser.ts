@@ -19,8 +19,7 @@ export const getFollowUser = async (req: Request, res: Response) => {
             throw new Error("Unauthorized. Check the token")
         }
 
-        const id = req.body.id
-        const userToFollowId = await selectUserProfile(id)
+        const userToFollowId = await selectUserProfile(req.body.id)
 
         if (!userToFollowId) {
             throw new Error("User not found")

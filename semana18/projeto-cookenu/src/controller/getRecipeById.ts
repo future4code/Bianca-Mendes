@@ -2,6 +2,7 @@ import { Response, Request } from "express"
 import { selectRecipeById } from "../model/selectRecipeById"
 import { selectUserProfile } from "../model/selectUserProfile"
 import { AuthenticationData } from "../types/authenticatorData"
+import { recipe } from "../types/recipe"
 import { getTokenData } from "../utils/authenticator"
 
 export const getRecipeById = async (req: Request, res: Response) => {
@@ -20,14 +21,21 @@ export const getRecipeById = async (req: Request, res: Response) => {
             throw new Error("Unauthorized. Check the token")
         }
 
-        const recipe: string = await selectRecipeById(req.params.id)
+        const recipe: recipe = await selectRecipeById(req.params.id)
 
                 
         if (!recipe) {
-            throw new Error("User not found")
+            throw new Error("Recipe not found")
         }
-
-        res.status(200).send(recipe)
+        
+        res.status(200).send({
+            id: recipe.id,
+            title: recipe.title,
+            instructions: recipe.instructions,
+            ingredients: recipe.ingredients,
+            create_date: new Date(recipe.create_date).toLocaleDateString()
+         })
+        // res.status(200).send(recipe)
 
     } catch(error) {
         if( 
