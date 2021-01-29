@@ -1,5 +1,5 @@
 import { Response, Request } from "express"
-import { loginInput, user } from "../types/user"
+import { user } from "../types/user"
 import {selectUserByEmail } from "../model/selectUserByEmail"
 import { compareHash } from "../utils/hashManager"
 import { generateToken } from "../utils/authenticator"
@@ -10,11 +10,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
     try{
         let errorCode: number = 400
 
-        const input: loginInput = {
-            email: req.body.email,
-            password: req.body.password
-        }
-
+        const { email, password } = req.body 
 
         //validações
         const keys = Object.keys(req.body)
@@ -24,12 +20,12 @@ export const login = async (req: Request, res: Response): Promise<any> => {
                 return res.send("Please fill in all fields!")
         }
 
-        if(!(input.email).includes("@")) {
+        if(!email.includes("@")) {
             errorCode = 406
             throw new Error("Please insert a valid email")
         }
 
-        const userCookenu: user = await selectUserByEmail(input.email)
+        const userCookenu: user = await selectUserByEmail(email)
                 
         if(!userCookenu) {
             errorCode = 404
@@ -37,7 +33,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
         }
         
         const passwordIsCorrect: boolean = compareHash(
-            input.password, userCookenu.password
+            password, userCookenu.password
         )
 
         if(!passwordIsCorrect){

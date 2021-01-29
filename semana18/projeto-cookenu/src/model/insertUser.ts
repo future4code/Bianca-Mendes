@@ -9,6 +9,6 @@ export const insertUser = async (user_cookenu: user ): Promise<any> => {
             .into("cookenu_users")
 
     } catch (error) {
-        throw new Error(error.sqlMessage || error.message);
+        throw new Error(error.sqlMessage || error.message)
     }
 }

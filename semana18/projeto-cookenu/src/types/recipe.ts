@@ -3,4 +3,6 @@ export type recipe = {
     title: string, 
     ingredients: string, 
     instructions: string
+    user_id: string
 }
+

@@ -11,11 +11,6 @@ export type user = {
     role: user_roles 
 }
 
-export type loginInput = {
-    email: string,
-    password: string
-}
-
 export type profileUser = {
     id: string,
     name: string,

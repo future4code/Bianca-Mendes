@@ -20,7 +20,9 @@ const createTables = async (): Promise<void> => {
             title VARCHAR(60) NOT NULL, 
             ingredients VARCHAR(255) NOT NULL, 
             instructions TEXT NOT NULL,
-            creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+            creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+            user_id VARCHAR(255) NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES cookenu_users(id)
         )
         `)
 

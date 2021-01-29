@@ -11,6 +11,6 @@ export const selectUserByEmail = async (email: string): Promise<any> => {
         return result[0]   
 
     } catch (error) {
-        throw new Error(error.sqlMessage || error.message);
+        throw new Error(error.sqlMessage || error.message)
     }
 }

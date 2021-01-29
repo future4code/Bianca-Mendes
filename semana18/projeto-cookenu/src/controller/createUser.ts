@@ -1,6 +1,6 @@
 import { Response, Request } from "express"
 import { insertUser } from "../model/insertUser"
-import { user } from "../types/user"
+import { user, user_roles } from "../types/user"
 import { generateToken } from "../utils/authenticator"
 import { generateHash } from "../utils/hashManager"
 import { generateId } from "../utils/idGenerator"

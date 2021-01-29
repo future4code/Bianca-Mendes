@@ -11,9 +11,9 @@ const populateTables = async (): Promise<void> => {
         
         
         await dataBase.raw(`
-        INSERT INTO recipes(id, title, ingredients, instructions)
+        INSERT INTO recipes(id, title, ingredients, instructions, user_id)
         VALUES   
-            ('1', 'Como fazer gelo', 'agua', 'despeje a agua numa forma de gelo, leve para o congelador');
+            ('1', 'Como fazer gelo', 'agua', 'despeje a agua numa forma de gelo, leve para o congelador', '1');
         `);
         
         console.log("data inserted into the tables successfully!")

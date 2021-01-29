@@ -1,10 +1,10 @@
 import { Response, Request } from "express"
+import { selectRecipeById } from "../model/selectRecipeById"
 import { selectUserProfile } from "../model/selectUserProfile"
 import { AuthenticationData } from "../types/authenticatorData"
-import { profileUser } from "../types/user"
 import { getTokenData } from "../utils/authenticator"
 
-export const getUserProfile = async (req: Request, res: Response) => {
+export const getRecipeById = async (req: Request, res: Response) => {
 
     try{
         const token: string = req.headers.authorization!
@@ -20,16 +20,14 @@ export const getUserProfile = async (req: Request, res: Response) => {
             throw new Error("Unauthorized. Check the token")
         }
 
-        const idProfile: string = req.params.id
+        const recipe: string = await selectRecipeById(req.params.id)
 
                 
-        const userInfoProfile: profileUser = await selectUserProfile(idProfile)
-
-        if (!userInfoProfile) {
+        if (!recipe) {
             throw new Error("User not found")
-         }
+        }
 
-        res.status(200).send(userInfoProfile)
+        res.status(200).send(recipe)
 
     } catch(error) {
         if( 
