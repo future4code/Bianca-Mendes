@@ -42,7 +42,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
         }
         await insertUser(newUser)
 
-        const token: string = generateToken({id})
+        const token: string = generateToken({id, role})
 
         res.status(200).send({"user created successfully! Access Token: ": token})
 

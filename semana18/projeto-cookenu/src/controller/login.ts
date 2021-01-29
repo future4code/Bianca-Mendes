@@ -30,7 +30,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
         }
 
         const userCookenu: user = await selectUserByEmail(input.email)
-        console.log(userCookenu)        
+                
         if(!userCookenu) {
             errorCode = 404
             throw new Error("User not found")
@@ -44,7 +44,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
             throw new Error("Incorrect password");
         }
 
-        const token: string = generateToken({id: userCookenu.id})
+        const token: string = generateToken({id: userCookenu.id, role: userCookenu.role})
 
         res.status(200).send({"user successfully logged! Access Token: ": token})
 
