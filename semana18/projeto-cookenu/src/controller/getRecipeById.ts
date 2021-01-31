@@ -1,3 +1,4 @@
+import dayjs from "dayjs"
 import { Response, Request } from "express"
 import { selectRecipeById } from "../model/selectRecipeById"
 import { selectUserProfile } from "../model/selectUserProfile"
@@ -16,26 +17,26 @@ export const getRecipeById = async (req: Request, res: Response) => {
 
         const verifiedToken: AuthenticationData = getTokenData(token)
 
-        //esse daqui é pra se der ruim e por algum motivo ele não verificar???como isso aconteceria!!!!
+        
         if(!verifiedToken){
             throw new Error("Unauthorized. Check the token")
         }
 
-        const recipe: recipe = await selectRecipeById(req.params.id)
-
-                
-        if (!recipe) {
+        const searchRecipe: recipe = await selectRecipeById(req.params.id)
+        
+        if (!searchRecipe) {
             throw new Error("Recipe not found")
         }
         
+              
         res.status(200).send({
-            id: recipe.id,
-            title: recipe.title,
-            instructions: recipe.instructions,
-            ingredients: recipe.ingredients,
-            create_date: new Date(recipe.create_date).toLocaleDateString()
-         })
-        // res.status(200).send(recipe)
+            id: searchRecipe.id,
+            title: searchRecipe.title,
+            instructions: searchRecipe.instructions,
+            ingredients: searchRecipe.ingredients,
+            user_id: searchRecipe.user_id,
+            create_date: dayjs(searchRecipe.create_date).format("DD/MM/YYYY")
+        })
 
     } catch(error) {
         if( 

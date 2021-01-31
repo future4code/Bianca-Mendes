@@ -14,7 +14,7 @@ export const getUnfollowUser = async (req: Request, res: Response) => {
 
         const verifiedToken: AuthenticationData = getTokenData(token)
 
-        //esse daqui é pra se der ruim e por algum motivo ele não verificar???como isso aconteceria!!!!
+       
         if(!verifiedToken){
             throw new Error("Unauthorized. Check the token")
         }

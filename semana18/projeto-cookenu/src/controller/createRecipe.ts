@@ -4,6 +4,7 @@ import { AuthenticationData } from "../types/authenticatorData"
 import { recipe } from "../types/recipe"
 import { getTokenData } from "../utils/authenticator"
 import { generateId } from "../utils/idGenerator"
+import dayjs from 'dayjs'
 
 export const createRecipe = async (req: Request, res: Response): Promise<any> => {
     
@@ -35,27 +36,15 @@ export const createRecipe = async (req: Request, res: Response): Promise<any> =>
 
         const id: string = generateId()
 
-         //const date = new Date(create_date).toLocaleDateString()
-
-      const date = new Date();
-      const day = date.getDate();           
-      const month = date.getMonth() + 1;    
-      const year = date.getFullYear();
-      const create_date: string = year + '/' + month + '/' + day
-        
         const newRecipe: recipe = {
             id,
             title,
             ingredients,
             instructions,
             user_id,
-            create_date
+            create_date:  dayjs().format('YYYY-MM-DD')
         }
-         console.log(create_date)
-        // const [day, month, year] = create_date.split("/")
-
-        // const formatDate: Date = new Date(`${year}-${month}-${day}`)
-
+         
         await insertRecipe(newRecipe)
 
         const viewRecipe = {
