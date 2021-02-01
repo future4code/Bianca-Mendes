@@ -1,7 +1,6 @@
 import { Request, Response } from "express"
 import { allUsers } from "../business/entities/user"
-import { businessAllUsers, businessLogin, businessSignup } from "../business/userBusiness"
-import dataBase from "../data/dataBase"
+import { businessAllUsers, businessDeleteUser, businessLogin, businessSignup } from "../business/userBusiness"
 
 export const signup = async (req: Request, res: Response) => {
 
@@ -73,4 +72,21 @@ export const getAllUsers = async (req: Request, res: Response) => {
         console.log(error.sqlMessage || error.message)
     }
     
+}
+
+export const deleteUser = async (req: Request, res: Response) => {
+
+    try{
+        const token: string = req.headers.authorization!
+
+        const { id } = req.params
+
+        await businessDeleteUser(id, token)
+
+        res.status(200).send( {message: "Usuário deletado!"})
+
+    } catch(error) {
+        res.status(400).send({ message: error.message })
+        console.log(error.sqlMessage || error.message)
+    }
 }

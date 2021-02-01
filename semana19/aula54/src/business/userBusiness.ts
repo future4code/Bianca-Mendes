@@ -1,5 +1,5 @@
-import { insertUser, selectAllUsers, selectUserByEmail } from "../data/userDataBase";
-import { allUsers, authenticationData, user, USER_ROLES } from "./entities/user";
+import { insertUser, selectAllUsers, selectDeleteUserById, selectUserBy, selectUserByEmail } from "../data/userDataBase";
+import { authenticationData, user, USER_ROLES } from "./entities/user";
 import { generateToken, getTokenData } from "./services/authenticator";
 import { comparePassword, generateHash } from "./services/hashManager";
 import { generateId } from "./services/idGenerator";
@@ -105,5 +105,20 @@ export const businessAllUsers = async (token: string) => {
          }
     
     return allUsers
+}
 
+
+export const businessDeleteUser = async (id: string, token: string) => {
+
+    if(!token) {
+        throw new Error("Não autorizado. Por favor, digite um token valido")  
+    }
+
+    const verifiedToken: authenticationData = getTokenData(token)
+
+    if(verifiedToken.role !== USER_ROLES.ADMIN){
+        throw new Error("Não autorizado. Apenas administradores podem deletar usuários")
+    }
+
+    return await selectDeleteUserById(id)
 }

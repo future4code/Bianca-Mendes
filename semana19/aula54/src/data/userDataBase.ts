@@ -47,3 +47,35 @@ export const selectAllUsers = async (): Promise<any> => {
         throw new Error(error.sqlMessage || error.message)
     }
 }
+
+export const selectDeleteUserById = async (id: string): Promise<any> => {
+    
+    try {
+        
+        await dataBase
+            .delete()
+            .from("User_Arq")
+            .where({id})
+
+    } catch (error) {
+        throw new Error(error.sqlMessage || error.message)
+    }
+}
+
+export const selectUserBy = async (name: string, value: string): Promise<any> => {
+
+    try {
+        const result = await dataBase
+            .select("*")
+            .into("User_Arq")
+            .where(name , "=", `${value}`)
+        
+        if(!result[0]){
+			throw new Error("Usuário não encontrado");
+		}
+        return result[0]
+
+    } catch (error) {
+        throw new Error(error.sqlMessage || error.message)
+    }
+}
