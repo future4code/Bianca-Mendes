@@ -1,4 +1,5 @@
 import { insertTask, selectTaskById } from "../data/taskDatabase"
+import { task } from "./entities/task"
 import { generateId } from "./services/idGenerator"
 
 export const businessCreateTask = async (
@@ -36,15 +37,14 @@ export const businessGetTaskById = async(id:string)=>{
       throw new Error("Tarefa não encontrada")
    }
 
-   const taskWithUserInfo = {
+   const task: task = {
       id: result.id,
       title: result.title,
       description: result.description,
       deadline: result.deadline,
-      status: result.status,
       authorId: result.author_id,
-      authorNickname: result.nickname
    }
+   const taskWithUserInfo =  task 
 
    return taskWithUserInfo
 }

@@ -5,10 +5,9 @@ import { generateId } from "./services/idGenerator";
 import { signupInputDTO, user, USER_ROLES } from "./entities/user";
 import { convertStringToUserRole } from "../data/model/userModel";
 
-export const businessSignup = async (
-   input: signupInputDTO
-) => {
-
+export const businessSignup = async (input: signupInputDTO) => {
+//no lugar do input: sign.. pode colocar:
+//input: Omit<user, "id"> //use utility types ---> ele pega o types do user e omito o "id" que ele carrega. Tbm poderia usar o signupInputDTO aqui
    if (
       !input.name ||
       !input.nickname ||
@@ -23,14 +22,16 @@ export const businessSignup = async (
 
    const cypherPassword = await hash(input.password);
 
-   await insertUser({
+   const user = {
       id,
       name: input.name,
       nickname: input.nickname,
       email: input.email,
       password: cypherPassword,
       role: convertStringToUserRole(input.role)
-   })
+
+   }
+   await insertUser(user)
 
    const token: string = generateToken({
       id,

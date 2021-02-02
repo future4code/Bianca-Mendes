@@ -22,9 +22,13 @@ export const signup = async (req: Request,res: Response) => {
    try {
       const input:signupInputDTO = {
          name: req.body.name,
-         nickname: req.body.nickname, email: req.body.email, password: req.body.password, role: req.body.role
+         nickname: req.body.nickname, 
+         email: req.body.email, 
+         password: req.body.password, 
+         role: req.body.role
       }
-
+//------ É possível substituir a linha 23 a 29 por: 
+//------ const token = await businessSignup(req.body as Omit<user, "id">) 
       const token = await businessSignup(input)
 
       res

@@ -19,6 +19,10 @@ export type user = {
    role: USER_ROLES
 }
 
+
+//pode substituir  o DTO por export type Omit <user, "id">
+//o omit pega o type que vc quer e tira a chave que não precisa
+// use utility types
 export type signupInputDTO = {
    name: string,
    nickname: string,

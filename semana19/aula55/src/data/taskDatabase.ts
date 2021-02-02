@@ -1,5 +1,6 @@
 import { connection } from "./connection";
 import { task } from "../business/entities/task";
+import { toTaskModel } from "./model/taskModel";
 
 export const selectTaskById = async (
    id: string
@@ -11,7 +12,7 @@ export const selectTaskById = async (
         WHERE tasks.id = '${id}';
     `)
 
-   return result[0][0]
+   return toTaskModel(result[0][0])
 }
 
 export const insertTask = async (
