@@ -12,4 +12,8 @@ export type post = {
     author_id: string 
 }
 
-
+export type PostReturn = {
+    photo: string,
+    description: string
+    
+}

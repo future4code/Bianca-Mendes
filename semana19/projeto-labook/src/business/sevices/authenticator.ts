@@ -15,5 +15,5 @@ export function getTokenData(token: string): authenticationData {
        process.env.JWT_KEY as string
     )
  
-    return { id: result.id, }
+    return { id: result.id }
 }

@@ -22,7 +22,7 @@ export const selectPostById = async (id: string ): Promise<post> => {
             .into("labook_posts")
             .where({id})
 
-        return result  
+        return result[0]  
 
     } catch (error) {
         throw new Error(error.sqlMessage || error.message);

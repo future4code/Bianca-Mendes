@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { post, PostReturn } from "../business/entities/post";
 import { businessCreatePost, businessSelectPostById } from "../business/postBusiness";
 
 export const createPost = async (req: Request, res: Response) => {
@@ -28,14 +29,14 @@ export const getPostById =  async (req: Request, res: Response) => {
  
        const { id } = req.params
 
-       await businessSelectPostById(id)
+      const post: post =  await businessSelectPostById(id)
         
-        const result = {
-            
-        }
+       const result: PostReturn = {
+        photo: post.photo, 
+        description: post.description
+       }  
 
-       
-       res.status(200).send({ businessSelectPostById })
+       res.status(200).send({result})
  
     } catch (error) {
        let message = error.sqlMessage || error.message

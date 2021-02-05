@@ -1,5 +1,3 @@
-//import dayjs from "dayjs";
-
 import { insertPost, selectPostById } from "../data/postDataBase";
 import { post, POST_TYPES } from "./entities/post";
 import { authenticationData } from "./entities/user";
@@ -56,12 +54,9 @@ export const businessSelectPostById = async (id: string) => {
     if (!post) {
               message = "Post not found"
               throw new Error(message)
-           }
+    }
 
-    const result = {
-        photo: post.photo
-    }       
-    return result        
+    return post       
 }
 
 
