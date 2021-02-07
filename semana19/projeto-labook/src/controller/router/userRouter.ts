@@ -1,8 +1,10 @@
 import express from "express"
-import { login, signup } from "../userController"
-
+import { UserController } from "../UserController"
 
 export const userRouter = express.Router()
 
-userRouter.post('/signup', signup)
-userRouter.post('/login', login)    
+//pra chamar o método que esta dentro da classe
+const userController = new UserController()
+
+userRouter.post('/signup', userController.signup)
+userRouter.post('/login', userController.login)

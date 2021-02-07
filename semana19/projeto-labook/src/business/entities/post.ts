@@ -8,12 +8,38 @@ export type post = {
     photo: string,
     description: string,
     type: POST_TYPES,
-    created_at: Date,
-    author_id: string 
+    createdAt: Date,
+    authorId: string 
 }
 
-export type PostReturn = {
-    photo: string,
-    description: string
-    
+export interface createPostInput {
+    photo: string, 
+    description: string,
+    type: POST_TYPES,
+    token: string
 }
+
+
+export interface getPostById {
+    id: string
+}
+
+export interface getPostByIdOutput {
+    photo: string,
+    description: string,
+    type: POST_TYPES,
+    createdAt: Date
+}
+
+export function toPostModel (obj: any) : post {
+    return obj && {
+        id: obj.id,
+        photo: obj.photo,
+        description: obj.description,
+        type: obj.type,
+        createdAt: obj.created_at,
+        authorId: obj.author_id 
+    }
+}
+
+

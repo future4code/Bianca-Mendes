@@ -1,71 +1,75 @@
-import { compare } from "bcryptjs"
-import { insertUser, selectUserByEmail } from "../data/userDataBase"
-import { user } from "./entities/user"
-import { generateToken } from "./sevices/authenticator"
-import { hash } from "./sevices/hashManager"
-import { generateId } from "./sevices/idGenerator"
+import { UserDataBase } from "../data/UserDataBase"
+import { LoginInput, SignUpInput, user } from "./entities/user"
+import { HashManager } from "./sevices/HashManager"
+import { IdGenerator } from "./sevices/IdGenerator"
+import { TokenManager } from "./sevices/TokenManager"
+
+////instancia pra chamar o método dentro da classe
+const hashManager: HashManager = new HashManager()
+const userDataBase: UserDataBase = new UserDataBase()
+const idGenerator: IdGenerator = new IdGenerator()
+const generateToken: TokenManager = new TokenManager()
+
+export class UserBusiness {
+
+    async signup (input: SignUpInput): Promise<string> {
+
+        try{
+
+            if (!input.name || !input.email || !input.password) {
+                throw new Error('"name", "email" and "password" must be provided')
+            }
+            
+            const id: string = idGenerator.generateId()
+                    
+            const cypherPassword = await hashManager.generateHash(input.password)
+        
+            const newUser: user = {
+                id,
+                name: input.name,
+                email: input.email,
+                password: cypherPassword 
+            }
+        
+            await  userDataBase.insertUser(newUser)
+        
+            const token: string = generateToken.generateToken({id})
+        
+            return token 
 
 
-export const businessSignup = async (
-    name: string,
-    email: string,
-    password:string
-) => {
-    
-    let message = "Success!"
-    if (!name || !email || !password) {
-        // res.statusCode = 406
-        message = '"name", "email" and "password" must be provided'
-        throw new Error(message)
+        } catch (error) {
+            throw new Error(error.message)
+        }
     }
 
-    const id: string = generateId()
+    async login  (input: LoginInput): Promise<string> {
 
-    const cypherPassword = await hash(password)
+        try {
+            if (!input.email || !input.password) {
+                throw new Error('"email" and "password" must be provided')
+            }
+        
+            const user : user = await userDataBase.selectUserByEmail(input.email)
+        
+            if (!user) {
+                throw new Error("Invalid credentials")
+            }
+        
+            const passwordIsCorrect: boolean = await hashManager.compareHash(input.password, user.password)
+        
+            if (!passwordIsCorrect) {
+                throw new Error( "Invalid credentials")
+            }
+        
+            const token: string = generateToken.generateToken({
+                id: user.id
+            })
+        
+            return token 
 
-    const newUser: user = {
-        id,
-        name,
-        email,
-        password: cypherPassword 
+        } catch (error) {
+            throw new Error(error.message)
+        }
     }
-
-    await insertUser(newUser)
-
-    const token: string = generateToken({id})
-
-    return token 
-}
-
-export const businessLogin = async (email: string, password:string) => {
-
-    let message = "Success!"
-
-    if (!email || !password) {
-        //res.statusCode = 406
-        message = '"email" and "password" must be provided'
-        throw new Error(message)
-    }
-
-    const user : user = await selectUserByEmail(email)
-
-    if (!user) {
-        //res.statusCode = 401
-        message = "Invalid credentials"
-        throw new Error(message)
-    }
-
-    const passwordIsCorrect: boolean = await compare(password, user.password)
-
-    if (!passwordIsCorrect) {
-        //res.statusCode = 401
-        message = "Invalid credentials"
-        throw new Error(message)
-    }
-
-    const token: string = generateToken({
-        id: user.id
-    })
-
-    return token 
 }
