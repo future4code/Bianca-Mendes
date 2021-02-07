@@ -3,6 +3,8 @@ import { BaseDataBase } from "./model/BaseDataBase";
 
 export class PostDataBase extends BaseDataBase {
 
+    tableName = "labook_posts"
+
     async insertPost(post_labook: post) {
 
         try {
@@ -15,7 +17,7 @@ export class PostDataBase extends BaseDataBase {
                     author_id:post_labook.authorId,
                     created_at: post_labook.createdAt.toISOString().substring(0, 10)
                 })
-                .into("labook_posts")
+                .into(this.tableName)
     
         } catch (error) {
             throw new Error(error.sqlMessage || error.message);
@@ -28,7 +30,7 @@ export class PostDataBase extends BaseDataBase {
         try {
             const result: any = await this.connection
                 .select("*")
-                .into("labook_posts")
+                .into(this.tableName)
                 .where({id})
 
         return toPostModel(result[0])  

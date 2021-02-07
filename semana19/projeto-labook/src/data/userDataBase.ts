@@ -4,12 +4,14 @@ import { BaseDataBase } from "./model/BaseDataBase";
 
 export class UserDataBase extends BaseDataBase {
 
+    tableName = "labook_users"
+
     async insertUser (user_labook: user ) {
 
         try {
             await this.connection
                 .insert(user_labook)
-                .into("labook_users")
+                .into(this.tableName)
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }
@@ -20,7 +22,7 @@ export class UserDataBase extends BaseDataBase {
             try {
                 const result: any = await this.connection
                     .select("*")
-                    .into("labook_users")
+                    .into(this.tableName)
                     .where({email})
                 
                 return toUserModel(result[0])        
