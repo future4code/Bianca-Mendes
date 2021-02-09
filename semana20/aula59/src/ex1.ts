@@ -7,7 +7,6 @@ export interface Character {
     life: number,
     defense: number,
     strength: number
-
 }
 
 
