@@ -1,5 +1,5 @@
 import { CustomError } from "../errors/CustomError";
-import { User, stringToUserRole } from "../model/User";
+import { User, stringToUserRole, UserRole } from "../model/User";
 import { UserDatabase } from "../data/UserDatabase";
 import { HashGenerator } from "../services/hashGenerator";
 import { IdGenerator } from "../services/idGenerator";
@@ -106,6 +106,23 @@ export class UserBusiness {
          }
 
       } catch(error) {
+         throw new CustomError(error.statusCode, error.message)
+      }
+   }
+
+   public async getAllUsers(token: string) {
+      
+      try{
+         const tokenUser = this.tokenGenerator.verify(token)
+
+         if(stringToUserRole(tokenUser.role) !== UserRole.ADMIN ) {
+            throw new CustomError(401, "Unauthorized")
+         }
+         const allUsers = await this.userDataBase.getAllUsers()
+
+         return {allUsers}
+
+      }catch (error) {
          throw new CustomError(error.statusCode, error.message)
       }
    }

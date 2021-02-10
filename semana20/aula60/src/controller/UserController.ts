@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
 import { UserDatabase } from "../data/UserDatabase";
+import { UserRole } from "../model/User";
 import { HashGenerator } from "../services/hashGenerator";
 import { IdGenerator } from "../services/idGenerator";
 import { TokenGenerator } from "../services/tokenGenerator";
@@ -53,6 +54,22 @@ export class UserController {
          res.status(statusCode || 400).send({ message })
       }
    }
+
+   public async getAllUsers(req: Request, res: Response) {
+      try{
+         const token: string = req.headers.authorization!
+
+         const result = await userBusiness.getAllUsers(token)
+
+         res.status(200).send(result)
+      } catch(error) {
+         const { statusCode, message } = error
+         res.status(statusCode || 400).send({ message })
+      }
+   }
+
+
 }
+
 
 export default new UserController()
