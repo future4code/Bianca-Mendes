@@ -1,6 +1,7 @@
 import { UserBusiness } from "../src/business/UserBusiness"
-import hashGenerator, { HashGenerator } from "../src/services/hashGenerator"
-import idGenerator, { IdGenerator } from "../src/services/idGenerator"
+import { stringToUserRole, User } from "../src/model/User"
+import { HashGenerator } from "../src/services/hashGenerator"
+import { IdGenerator } from "../src/services/idGenerator"
 import { TokenGenerator } from "../src/services/tokenGenerator"
 
 describe("Testing getUserByI Business", () => {
@@ -21,9 +22,9 @@ describe("Testing getUserByI Business", () => {
         expect.assertions(2)
 
         try{
-            //const userDatabase = {getUserById: jest.fn((id: string) => undefined )} as any
+            const userDatabase = {getUserById: jest.fn((id: string) => undefined )} as any
 
-            // const userBusiness: UserBusiness = new UserBusiness(idGenerator, hashGenerator, tokenGenerator, userDatabase )
+            const userBusiness: UserBusiness = new UserBusiness(idGenerator, hashGenerator, tokenGenerator, userDatabase )
 
             await userBusiness.getUserById("senha errada")
         } catch (error) {
@@ -31,4 +32,34 @@ describe("Testing getUserByI Business", () => {
             expect(error.message).toBe("User not found")
         }
     })
+
+
+    test("should return user", async () => {
+        expect.assertions(2)
+
+            //mock da saída
+            const mock = new User (
+                "mockId",
+                "name",
+                "email@email.com",
+                "password",
+                stringToUserRole("NORMAL")
+            )
+                
+            const userDatabase = {getUserById: jest.fn((id: string) => mock )} as any
+
+            const userBusiness: UserBusiness = new UserBusiness(idGenerator, hashGenerator, tokenGenerator, userDatabase )
+
+            const user = await userBusiness.getUserById("id")
+
+            expect(user).toEqual({
+                id: "mockId",
+                name: "name",
+                email: "email@email.com",
+                role: "NORMAL"
+            })
+            expect(userDatabase.getUserById).toHaveBeenCalledWith("id")
+       
+    })
 })
+
